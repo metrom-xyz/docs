@@ -1,11 +1,68 @@
-# Introduction
- 
-Welcome to Nextra! This is a basic docs template. You can use it as a starting point for your own project :)
+# What is Metrom?
 
-## What is Nextra?
+### Design your incentives to attract liquidity
 
-A **simple**, **powerful** and **flexible** site generation framework with everything you love from Next.js.
+[Metrom](https://metrom.xyz) is an efficient liquidity mining platform that
+AMMs, especially those based on concentrated liquidity AMMs, can use to
+incentivize liquidity providers (LPs) to ensure efficient distribution of
+incentives.
 
-## Documentation
+Metrom lets AMMs and project design their incentive structures to their
+liquidity providers by bringing flexibility and efficiency to incentives.
 
-The documentation is available at [https://nextra.site](https://nextra.site).
+### For campaign creators
+
+**What makes Metrom so powerful is its completely hands off approach.**
+
+Attract liquidity to your pair in three easy steps:
+
+1.  Pick the DEX and pool
+2.  Set the duration
+3.  Add rewards
+
+It's that simple.
+
+<div class="mediaWrapper">![Creation form](/images/creation-form.png)</div>
+
+### How Metrom works
+
+We perform advanced off-chain computations to analyze on-chain liquidity
+positions.
+
+As a result, rewards are allocated in direct proportion to the liquidity density
+(combination of size of the position and concentration range of each position),
+accurately reflecting the value each LP contributes to the pool.
+
+<div class="mediaWrapper">
+    ![Metrom distribution](/images/metrom-distribution.svg)
+</div>
+
+### Benefits
+
+Metrom thrives on bringing flexibility to incentives.
+
+-   **No more staking LP NFT for rewards**: Metrom calculates positions
+    off-chain, eliminating the need for staking into and withdrawing from
+    farming contracts. It calculates all positions off-chain and pushes the
+    Merkle root on-chain for LPs to claim their incentives.
+
+-   **KPI based campaigns**: Campaign creators can set emission goals based on a
+    specified range of Total Value Locked (TVL) for their chosen pair. Actual
+    emissions depend on achieving these goals. If the goal is not fully met, any
+    unrewarded incentives are returned to the campaign creators, resulting in
+    significant savings. This forward-thinking approach increases both the
+    efficiency and effectiveness of incentive strategiesSet a TVL goal for your
+    community to achieve and perform incentive payouts based on how much the
+    goal is achieved.
+
+-   **Range based rewards**: Pick a specific tick range that you would like to
+    incentivize. Will help in receiving deep liquidity on stable pools.
+
+-   **Multi campaigns**: Create multiple campaigns in a single transaction.
+    Efficient for AMMs that run multiple campaigns, eliminating the need to
+    sign, approve, and execute multiple transactions.
+
+### Stay Updated
+
+Don't miss out on our future releases. Stay updated with the latest news and
+upcoming features.

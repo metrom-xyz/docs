@@ -2,6 +2,20 @@
 @tailwind components;
 @tailwind utilities;
 
-.body {
-    @apply bg-gray-100;
+html,
+body {
+    @apply text-black bg-gray-100 dark:text-white dark:bg-[#111111];
+}
+
+img,
+video {
+    @apply rounded-2xl;
+}
+
+aside {
+    @apply md:min-w-80;
+}
+
+.mediaWrapper {
+    @apply w-full flex justify-center my-2;
 }

@@ -1,0 +1,44 @@
+# Creating a campaign with a KPI
+
+Creating a basic campaign on Metrom is straightforward, as covered in
+[creating a campaign](/creating-a-campaign). Launching one with an attached KPI
+is just as easy. For a quick refresher on KPIs, check out
+[KPI based liquidity mining](/kpi).
+
+### Configuration
+
+Once all the required form steps are completed, it's time to enable the KPI and
+explore the available configuration options.
+
+<div class="mediaWrapper">
+    ![Empty KPI step](/images/creation-form-empty-kpi.png)
+</div>
+
+-   **Current TVL**: Represents the most recent total value locked in the
+    selected pool, which is being incentivized.
+
+-   **Lower and upper bounds**: These values allow you to customize the
+    incentivization strategy by restricting reward distribution to a specific
+    TVL range. For inspiration, check out the [KPI usecases](/kpi/usecases).
+
+-   **Minimum payout**: This is the percentage of rewards that will be
+    distributed to LPs, regardless of the KPI.
+
+The KPI step also provides a simulation of your configuration, giving you an
+overview of how the rewards distribution will change as the TVL fluctuates.
+Let's say we want to have a linear incentivization between `$0` and a target of
+up to `$100k`.
+
+<div class="mediaWrapper">
+    ![Configured KPI step](/images/creation-form-configured-kpi.png)
+</div>
+
+Once you're satisfied with the KPI setup, apply the changes and head to the
+campaign preview, where you can review all the details, including the KPI
+configuration and simulation.
+
+<div class="mediaWrapper">
+    ![Preview with KPI](/images/preview-with-kpi.png)
+</div>
+
+At this point, the only thing left to do is launch the campaign.

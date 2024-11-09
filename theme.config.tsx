@@ -1,4 +1,4 @@
-import { DocsThemeConfig } from "nextra-theme-docs";
+import { useConfig, type DocsThemeConfig } from "nextra-theme-docs";
 import { MetromSquareLogo } from "./components/metrom-square-logo";
 
 const config: DocsThemeConfig = {
@@ -7,7 +7,10 @@ const config: DocsThemeConfig = {
         link: "https://github.com/metrom-xyz/docs",
     },
     chat: {
-        link: "https://discord.com",
+        link: "https://t.co/CxuKegMffl",
+    },
+    sidebar: {
+        defaultMenuCollapseLevel: 0,
     },
     docsRepositoryBase: "https://github.com/metrom-xyz/docs",
 };

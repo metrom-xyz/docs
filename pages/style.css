@@ -12,10 +12,10 @@ video {
     @apply rounded-2xl;
 }
 
-aside {
-    @apply md:min-w-80;
-}
-
 .mediaWrapper {
     @apply w-full flex justify-center my-2;
+}
+
+.greenText {
+    @apply text-green-400 font-medium;
 }

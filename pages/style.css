@@ -12,6 +12,10 @@ video {
     @apply rounded-2xl;
 }
 
+aside {
+    @apply md:min-w-72;
+}
+
 .mediaWrapper {
     @apply w-full flex justify-center my-2;
 }

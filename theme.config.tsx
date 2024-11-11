@@ -13,6 +13,7 @@ const config: DocsThemeConfig = {
     },
     sidebar: {
         defaultMenuCollapseLevel: 0,
+        toggleButton: false,
     },
     docsRepositoryBase: "https://github.com/metrom-xyz/docs",
     head: Header,

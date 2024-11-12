@@ -6,7 +6,7 @@ import { XLogo } from "./assets/logos/x";
 
 export function Footer() {
     return (
-        <div className="w-full flex flex-col sm:flex-row justify-between items-center gap-5 mb-12">
+        <div className="w-full flex flex-col sm:flex-row justify-between items-center gap-5">
             <div className="flex flex-col gap-11">
                 <div className="flex gap-5">
                     <a

@@ -17,6 +17,12 @@ const config: DocsThemeConfig = {
     },
     docsRepositoryBase: "https://github.com/metrom-xyz/docs",
     head: Header,
+    editLink: {
+        component: null,
+    },
+    feedback: {
+        content: null,
+    },
     footer: {
         content: Footer,
     },

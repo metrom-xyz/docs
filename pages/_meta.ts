@@ -7,6 +7,7 @@ const meta = {
     audits: "Audits and tests",
     roadmap: "Roadmap",
     glossary: "Glossary",
+    "brand-assets": "Brand assets",
 };
 
 export default meta;

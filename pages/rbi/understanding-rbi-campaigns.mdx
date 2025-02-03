@@ -1,0 +1,61 @@
+---
+title: Understanding Range Based Incentive campaigns
+description: Introduction to Range Based Incentive campaigns.
+---
+
+## Understanding Range Based Incentive campaigns
+
+Range-Based Incentives enable campaign creators to direct liquidity rewards to specific price ranges within AMM pools, optimizing liquidity placement where it matters most. 
+
+
+## Technical Overview
+
+### Key Components
+
+#### Price Ranges (Tick Ranges):
+
+- Liquidity is concentrated within discrete intervals (e.g., 0.99 – 1.005 for stablecoins)
+- Defined using AMM-specific tick systems (e.g., Uniswap V3’s sqrtPrice ticks)
+
+#### Liquidity Providers (LPs):
+- Stake tokens in targeted ranges to earn rewards.
+- Incentivized to optimize capital allocation (e.g., avoiding ranges with low trading activity).
+
+#### Reward Allocation:
+
+- Campaign creators distribute rewards proportionally to liquidity provision within specified ranges.
+- Supports multiple reward tokens (e.g., protocol tokens, stablecoins).
+
+### Tech behind calculation
+
+# this is for KPI we need similar thing for range based incentives
+
+Our KPI-based incentive mechanism operates on a regular metronomic frequency. At each cycle, we fetch all measurable campaigns—those with attached KPIs—and run measurement tasks based on their on-chain state and current market prices. When its time to assign and distribute rewards, we take an average of these measurements since the last reward distribution and the KPI setup (TVL goal reached in percentage and minimum payout), we calculate a multiplier that will scale down the amount of overall rewards for the period. 
+With these liquidity density calculated, the rewards are then distributed as normal ensuring that the emissions are aligned with the campaign's KPI targets.
+
+### Campaign Workflow
+
+1. **Define Ranges**: Campaign creators specify target price ranges (e.g., 0.99 – 1.005 for stablecoin pools).
+
+2. **LPs Deposit Liquidity**: LPs stake tokens in the defined ranges via AMM interfaces (e.g., Uniswap V3 positions).
+
+3. **Reward Distribution**: Rewards are distributed based on LPs’ liquidity exposure within ranges. It can be claimed via Metrom’s dashboard. 
+
+
+### Comparison with Traditional Incentives
+
+| METRIC                                   | TRADITIONAL INCENTIVES                  | RANGE BASED INCENTIVES                  | 
+| ------------------------------------- | -------------------------------------------- | -------------------------------------------- |
+| **Liquidity Distribution** | Uniform across all ranges | <span className="greenText">Concentrated in critical zones</span> |
+| **Capital Efficiency**        | Low (wasted rewards)                                            | <span className="greenText">High (reduced slippage)</span> |
+| **User Experience**  | Suboptimal (high slippage)                                            | <span className="greenText">Improved (tighter spreads)</span>
+
+### Core benefits
+
+**Directed Liquidity**: Protocols can guide LPs on where their liquidity is most valuable, aligning with strategic objectives.
+
+**Increased Efficiency**: Deep liquidity in targeted ranges reduces slippage and improves user satisfaction.
+
+**Effective**: Protocols achieve greater liquidity for the same or even lower incentive spend, maximizing ROI.
+
+**Flexibility**: Suitable for stable, and yield-bearing pools, Range-Based Incentives adapt to diverse use cases and goals.

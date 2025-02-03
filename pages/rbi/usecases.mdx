@@ -1,0 +1,123 @@
+---
+title: Range Based Incentive uses cases
+description: Range Based Incentive usecases.
+---
+
+## Stablecoin Pools
+
+For stablecoin pairs like USDC-DAI, campaigns target the 0.99 - 1.005 range to:
+Ensure deep liquidity near the peg
+Maintain tighter spreads
+Reduce slippage for traders1
+
+
+_The following outlines how to design KPI incentive campaigns to more
+effectively achieve your project goals and objectives. Feel free to contact the
+team to discuss any of these use cases._
+
+For a closer look at how KPI-based incentivization works and the benefits it
+brings, check out our in-depth article
+[here](https://medium.com/@metromxyz/kpi-based-farming-aligning-incentives-between-projects-and-communities-d2fd0ccc6ac1).
+We break down how Metrom simplifies reward structures and optimizes distribution
+through various KPI use cases.
+
+### Quick reference glossary
+
+-   **KPI**: TVL goal that the project would like to reach.
+
+-   **Upper bound**: Upper limit value above which no more rewards are
+    distributed.
+-   **Lower bound**: Lower limit value below which no rewards are distributed.
+
+-   **Minimum payout**: Amount of rewards paid out regardless of whether a KPI
+    is met or not.
+
+### Linear incentivization
+
+**Scenario**: Target KPI of `$100k` total value locked (TVL), with `$10k`
+allocated as rewards.
+
+<div className="mediaWrapper">
+    ![Linear KPI simulation](/images/kpi-linear-simulation.png)
+</div>
+
+**Mechanism**: Rewards are distributed proportionally based on how much of the
+KPI is achieved. If the pool reaches `60%` of the target (`$60k` in TVL), then
+`$6k` (`60%` of the reward pool) is distributed to the liquidity providers.
+
+**Takeaway**: Linear incentivization offers flexibility, allowing LPs to still
+earn rewards even if the full KPI isn’t met.
+
+### Minimum payout
+
+**Scenario**: Target KPI of `$100k` total value locked (TVL), with `$10k`
+allocated as rewards, and a minimum payout percentage of `80%`.
+
+<div className="mediaWrapper">
+    ![KPI with minimum payout](/images/kpi-minimum-payout-simulation.png)
+</div>
+
+**Mechanism**: `80%` of the rewards, so `$8k`, is distributed regardless of the
+KPI outcome, while the remaining `20%` is unlocked only if the target KPI is
+met. The remaining `20%` is unlocked and distributed proportionally with the KPI
+target being met between `80–100%`, and not just if the `100k` TVL upper bound
+is reached. If the pool reaches `$90k` in TVL, `$8k` is distributed as the
+minimum payout, while the full `$10k` is only unlocked if the TVL reaches
+`$100k`.
+
+**Takeaway**: This structure guarantees a baseline reward, reducing the risk for
+LPs and ensuring liquidity, even if the target is slightly missed.
+
+### Bonus-driven incentives
+
+**Scenario**: Target KPI of `$100k` total value locked (TVL), with `$10k`
+allocated as rewards, where `$10k` is the minimum payout and an additional `$1k`
+bonus distribution based on the KPI met.
+
+<div className="mediaWrapper">
+    ![KPI bonus driven simulation](/images/kpi-bonus-driven-simulation.png)
+</div>
+
+**Mechanism**: Rewards are distributed proportionally based on KPI achievement,
+with the bonus activated if the target is exceeded. If the pool reaches `$100k+`
+in TVL, LPs receive the full `$10k` plus an additional `$1k` as a bonus.
+
+**Takeaway**: This structure encourages LPs to push beyond the target, rewarding
+higher performance with extra incentives.
+
+### Lower bound and upper bound
+
+**Scenario**: Target KPI of `$100k` total value locked (TVL), with `$10k`
+allocated as rewards, and a lower limit set at `$20k` TVL.
+
+<div className="mediaWrapper">
+    ![KPI lower bound and upper bound
+    simulation](/images/kpi-bounds-simulation.png)
+</div>
+
+**Mechanism**: Rewards are only unlocked if the TVL exceeds the lower bound of
+`$20k`. From there, the rewards are distributed linearly based on the KPI
+achievement. If the pool reaches `$60k` in TVL, then `$6k` is distributed, but
+if the TVL remains below `$20k`, no rewards are unlocked.
+
+**Takeaway**: This structure protects projects from over-incentivizing in
+situations where liquidity levels fall too low to be effective.
+
+### Minimum payout with control limits
+
+**Scenario**: Target KPI of `$100k` total value locked (TVL), with `$10k`
+allocated as rewards, with a minimum payout percentage of `80%`, and `20%`
+prorated between `$20k` and `$100k` TVL.
+
+<div className="mediaWrapper">
+    ![KPI minimum payout with control limits
+    simulation](/images/kpi-minimum-payout-limits-simulation.png)
+</div>
+
+**Mechanism**: `80%` of the reward pool, so `$8k`, is distributed regardless of
+KPI outcomes. The remaining `20%` is distributed based on the range between
+`$20k` and `$100k` TVL. If the pool reaches `$75k` in TVL, LPs receive the `$8k`
+minimum payout, plus a proportional part of the remaining `$2k`.
+
+**Takeaway**: This structure balances baseline rewards with a dynamic incentive
+that scales with performance.

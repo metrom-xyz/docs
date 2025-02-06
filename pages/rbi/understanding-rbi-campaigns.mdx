@@ -28,10 +28,19 @@ Range-Based Incentives enable campaign creators to direct liquidity rewards to s
 
 ### Tech behind calculation
 
-# this is for KPI we need similar thing for range based incentives
+Each active position in the pool's range is compared to the incentivized range and its weight (i.e. liquidity contribution) is scaled proportional to the intersecting range. There are 3 cases possible here:
 
-Our KPI-based incentive mechanism operates on a regular metronomic frequency. At each cycle, we fetch all measurable campaigns—those with attached KPIs—and run measurement tasks based on their on-chain state and current market prices. When its time to assign and distribute rewards, we take an average of these measurements since the last reward distribution and the KPI setup (TVL goal reached in percentage and minimum payout), we calculate a multiplier that will scale down the amount of overall rewards for the period. 
-With these liquidity density calculated, the rewards are then distributed as normal ensuring that the emissions are aligned with the campaign's KPI targets.
+**The position is completely off range**: It's weight is just nullified and the position's owner is not given any reward for that position. 
+
+**The position is completely in range**: The position's weight is taken as-is, depending on its liquidity density function (amount of tokens provided for the picked concentration level)
+
+**The position is partially in range**: the width of the intersection between the position's range and the incentivized range is calculated and compared to the width of the full incentivized range. The ratio of the 2 is used as a multiplier to scale down the overall weight of the position.
+
+These are examples for both cases, assuming we have an incentivized range going from tick 0 to tick 10 for a pool:
+
+- Assuming we have a **position with weight 100 that goes from tick 100 to tick 110**, that won't be taken into consideration when giving out rewards
+- Assuming we have a **position with weight 100 that goes from tick 1 to tick 5**, that will be taken in consideration with weight 100 (i.e. in full) when giving out rewards
+- Assuming we have a **position with weight 100 that goes from tick -10 to tick 10**, we calculate the intersecting range's width, which in this case is 10, and compare it to the full position range (20) to find out that we need to consider 50% of the position's weight, so 50.
 
 ### Campaign Workflow
 

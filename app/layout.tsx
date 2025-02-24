@@ -12,8 +12,6 @@ import "nextra-theme-docs/style.css";
 import { MetromSquareLogo } from "../components/assets/logos/metrom-square";
 import { Footer } from "../components/footer";
 
-export const { viewport } = Head;
-
 export const metadata = {
     title: "Metrom",
     description:

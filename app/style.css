@@ -19,7 +19,7 @@ aside {
 }
 
 .nextra-sidebar-footer {
-    @apply theme-bg;
+    @apply sm:theme-bg;
 }
 
 .mediaWrapper {

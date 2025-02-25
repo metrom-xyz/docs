@@ -4,11 +4,12 @@ import "@fontsource/ibm-plex-sans/700.css";
 import "@fontsource/ibm-plex-mono/500.css";
 
 import "./style.css";
+import "nextra-theme-docs/style.css";
 
 import { Layout, Navbar } from "nextra-theme-docs";
 import { Head } from "nextra/components";
 import { getPageMap } from "nextra/page-map";
-import "nextra-theme-docs/style.css";
+import { pageMap as integrationPageMap } from "./remote/[[...slug]]/page";
 import { MetromSquareLogo } from "../components/assets/logos/metrom-square";
 import { Footer } from "../components/footer";
 
@@ -26,6 +27,16 @@ export default async function RootLayout({ children }) {
             projectLink="https://github.com/metrom-xyz/docs"
         />
     );
+
+    const pageMap = [
+        ...(await getPageMap()),
+        {
+            name: "remote",
+            route: "/remote",
+            children: [integrationPageMap],
+        },
+    ];
+
     return (
         <html lang="en" dir="ltr" suppressHydrationWarning>
             <Head>
@@ -53,7 +64,7 @@ export default async function RootLayout({ children }) {
                     }}
                     feedback={{ content: null }}
                     editLink={null}
-                    pageMap={await getPageMap()}
+                    pageMap={pageMap}
                     themeSwitch={{}}
                 >
                     {children}

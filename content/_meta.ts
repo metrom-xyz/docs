@@ -9,6 +9,7 @@ const meta = {
     roadmap: "Roadmap",
     glossary: "Glossary",
     "brand-assets": "Brand assets",
+    developers: "Developers",
 };
 
 export default meta;

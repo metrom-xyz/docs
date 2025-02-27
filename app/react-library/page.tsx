@@ -1,12 +1,8 @@
 import { compileMdx } from "nextra/compile";
-import { Callout, Tabs } from "nextra/components";
 import { evaluate } from "nextra/evaluate";
 import { useMDXComponents as getMDXComponents } from "nextra-theme-docs";
 
-const { wrapper: Wrapper, ...components } = getMDXComponents({
-    $Tabs: Tabs,
-    Callout,
-});
+const { wrapper: Wrapper, ...components } = getMDXComponents();
 
 export default async function Page() {
     const response = await fetch(

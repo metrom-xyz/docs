@@ -9,7 +9,7 @@ import { Layout, Navbar } from "nextra-theme-docs";
 import { Head } from "nextra/components";
 import { getPageMap } from "nextra/page-map";
 import "nextra-theme-docs/style.css";
-import { MetromSquareLogo } from "../components/assets/logos/metrom-square";
+import { MetromSquareLogo } from "../assets/logos/metrom-square";
 import { Footer } from "../components/footer";
 
 export const metadata = {

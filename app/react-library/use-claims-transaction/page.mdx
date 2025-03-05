@@ -1,0 +1,86 @@
+---
+title: useClaimsTransaction
+description:
+    Hook for simulating and validating the contract interactions to claim the
+    specified rewards for an account on a given chain id.
+---
+
+## useClaimsTransaction
+
+Hook for simulating and validating the contract interactions to claim the
+specified rewards for an account on a given chain id.
+
+### Import
+
+```ts
+import { useClaimsTransaction } from "@metrom-xyz/react";
+```
+
+### Usage
+
+```tsx
+import { useClaimsTransaction } from "@metrom-xyz/react";
+
+function App() {
+    const { loading, transaction } = useClaimsTransaction({
+        chainId: 1,
+        claims: [],
+        address: "0x0000000000000000000000000000000000000000";
+    });
+}
+```
+
+### Parameters
+
+```ts
+import { type UseClaimsTransactionParams } from "@metrom-xyz/react";
+```
+
+#### chainId
+
+`number`
+
+The chain id on which the claims are performed.
+
+```tsx
+import { useClaimsTransaction } from "@metrom-xyz/react";
+
+function App() {
+    const { loading, transaction } = useClaimsTransaction({
+        chainId: 1,
+    });
+}
+```
+
+#### claims
+
+`Claim[]`
+
+The list of claims retrieved using the [`useClaims`](/react-library/use-claims)
+hook.
+
+```tsx
+import { useClaimsTransaction, useClaims } from "@metrom-xyz/react";
+
+function App() {
+    const { claims } = useClaims({
+        address: "0x0000000000000000000000000000000000000000",
+    });
+    const { loading, transaction } = useClaimsTransaction({
+        chainId: 1,
+        claims: [],
+        address: "0x0000000000000000000000000000000000000000",
+    });
+}
+```
+
+### Return Type
+
+The returned object includes the transaction simulation result, that can be used
+to submit the transaction, using the
+[useWriteContract](https://wagmi.sh/react/api/hooks/useWriteContract) hook from
+wagmi.
+
+```ts
+import { type UseClaimsTransactionReturnValue } from "@metrom-xyz/react";
+```

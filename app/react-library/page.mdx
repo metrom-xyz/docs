@@ -1,0 +1,12 @@
+---
+title: React library
+description: Basic configuration for the React library.
+asIndexPage: true
+---
+
+import { RemoteMarkdown } from "../../components/remote-markdown";
+import { REMOTE_MDX_BRANCH } from "../commons";
+
+<RemoteMarkdown
+    url={`https://raw.githubusercontent.com/metrom-xyz/monorepo/refs/heads/${REMOTE_MDX_BRANCH}/packages/react/README.md`}
+/>

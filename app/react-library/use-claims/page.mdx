@@ -1,0 +1,52 @@
+---
+title: useClaims
+description: Hook for fetching the available claims for an account.
+---
+
+## useClaims
+
+Hook for fetching the available claims for an account.
+
+### Import
+
+```ts
+import { useClaims } from "@metrom-xyz/react";
+```
+
+### Usage
+
+```tsx
+import { useClaims } from "@metrom-xyz/react";
+
+function App() {
+    const { loading, claims } = useClaims();
+}
+```
+
+### Parameters
+
+```ts
+import { type UseClaimsReturnValue } from "@metrom-xyz/react";
+```
+
+#### address
+
+`Address | undefined`
+
+The wallet address of the receiver account.
+
+```tsx
+import { useClaims } from "@metrom-xyz/react";
+
+function App() {
+    const { loading, claims } = useClaims({
+        address: "0x0000000000000000000000000000000000000000",
+    });
+}
+```
+
+### Return Type
+
+```ts
+import { type UseClaimsReturnValue } from "@metrom-xyz/react";
+```

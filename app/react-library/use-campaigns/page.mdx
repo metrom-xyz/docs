@@ -1,0 +1,103 @@
+---
+title: useCampaigns
+description: Hook for fetching all the valid campaigns on Metrom.
+---
+
+## useCampaigns
+
+Hook for fetching all the valid campaigns that have been created on Metrom.
+Supports optional filtering.
+
+### Import
+
+```ts
+import { useCampaigns } from "@metrom-xyz/react";
+```
+
+### Usage
+
+```tsx
+import { useCampaigns } from "@metrom-xyz/react";
+
+function App() {
+    const { loading, campaigns } = useCampaigns();
+}
+```
+
+### Parameters
+
+```ts
+import { type UseCampaignsParams } from "@metrom-xyz/react";
+```
+
+#### status
+
+`CampaignStatus | undefined`
+
+Optional campaign status to filter for.
+
+```tsx
+import { useCampaigns, CampaignStatus } from "@metrom-xyz/react";
+
+function App() {
+    const { loading, campaigns } = useCampaigns({
+        status: CampaignStatus.Active,
+    });
+}
+```
+
+#### owner
+
+`Address | undefined`
+
+Optional campaign owner to filter for; the owner can be different from the
+campaign creator if the ownership was transferred.
+
+```tsx
+import { useCampaigns } from "@metrom-xyz/react";
+
+function App() {
+    const { loading, campaigns } = useCampaigns({
+        owner: "0x0000000000000000000000000000000000000000",
+    });
+}
+```
+
+#### chainId
+
+`number | undefined`
+
+Optional campaign chain id to filter for; the chain id is where the campaign
+lives in.
+
+```tsx
+import { useCampaigns } from "@metrom-xyz/react";
+
+function App() {
+    const { loading, campaigns } = useCampaigns({
+        chainId: 1,
+    });
+}
+```
+
+#### dex
+
+`SupportedDex | undefined`
+
+Optional campaign targeted dex.
+
+```tsx
+import { useCampaigns, SupportedDex } from "@metrom-xyz/react";
+
+function App() {
+    const { loading, campaigns } = useCampaigns({
+        dex: SupportedDex.UniswapV3,
+    });
+}
+```
+
+### Return Type
+
+```ts
+import { type UseCampaignsReturnValue } from "@metrom-xyz/react";
+```

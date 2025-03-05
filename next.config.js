@@ -1,7 +1,9 @@
 import nextra from "nextra";
 
 const withNextra = nextra({
-    latex: true,
+    latex: {
+        renderer: "mathjax",
+    },
 });
 
 const nextConfig = withNextra();

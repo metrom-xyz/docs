@@ -1,8 +1,8 @@
-import { DiscordLogo } from "./assets/logos/discord";
-import { GithubLogo } from "./assets/logos/github";
-import { MetromFullLogo } from "./assets/logos/metrom-full";
-import { TelegramLogo } from "./assets/logos/telegram";
-import { XLogo } from "./assets/logos/x";
+import { DiscordLogo } from "../assets/logos/discord";
+import { GithubLogo } from "../assets/logos/github";
+import { MetromFullLogo } from "../assets/logos/metrom-full";
+import { TelegramLogo } from "../assets/logos/telegram";
+import { XLogo } from "../assets/logos/x";
 import { Footer as NextraFooter } from "nextra-theme-docs";
 
 export function Footer() {

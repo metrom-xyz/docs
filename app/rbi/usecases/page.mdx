@@ -3,27 +3,53 @@ title: Range Based Incentive uses cases
 description: Range Based Incentive usecases.
 ---
 
-### Stablecoin pools
+# Range Based Incentive usecases
 
-For stablecoin pairs like USDC-DAI, campaigns target the 0.99 - 1.005 range to:
+Range‐based incentives enable protocols to direct liquidity precisely where it is needed, yielding several key advantages:
+
+- **Deeper Liquidity:** Concentrating liquidity in the most critical zones minimizes slippage.
+- **Enhanced Capital Efficiency:** Incentives are used more effectively, reducing liquidity acquisition cost significantly.
+- **Improved Trading Experience:** Tighter spreads and robust liquidity depth lead to better prices for users.
+
+This targeted approach maximizes the impact of incentive programs and helps align liquidity providers’ contributions with the strategic goals of the protocol.
+
+## 1. Stablecoin Pairs
+
+In stablecoin pools (e.g., USDC/DAI or USDC/USDT), trading predominantly occurs near the 1:1 peg.
 
 <div className="mediaWrapper">
     ![Stable Coin Pool](/images/stable-pair.png)
 </div>
 
-- Ensure deep liquidity near the peg.
-- Maintain tighter spreads.
-- Reduce slippage for traders.
+**Strategy:** Target rewards within a narrow range (e.g., 0.99–1.01) to concentrate liquidity around the peg.
 
-### Yield-Bearing pools
+**Benefits:**
 
-For pools like WETH - wstETH, incentives focus on the 1-1.01 range to:
+- **Deeper Liquidity at the Peg:** Tighter liquidity reduces slippage.
+- **Efficient Incentive Spending:** Reward funds are focused on the active trading area rather than being spread thinly across the full range.
+
+## 2. Yield-Bearing Asset Pools
+
+Pools involving yield-bearing assets (e.g., WETH/wstETH) often see similar price movements due to underlying yield dynamics.
 
 <div className="mediaWrapper">
     ![Yield Bearing Pool](/images/staking-pool.png)
 </div>
 
-- Align with pool dynamics.
-- Optimize capital efficiency.
-- Direct rewards to high-value ranges.
+**Strategy:** Concentrate incentives in a tight band (e.g., 1.00–1.01) where the assets’ prices align.
 
+**Benefits:**
+
+- **Optimized Capital Efficiency:** LPs are rewarded on liquidity that is most likely to be used.
+- **Improved Trading Prices:** Tighter spreads lead to a better trading experience.
+
+## 3. Filling Liquidity Gaps in Volatile Asset Pools
+
+In volatile asset pairs, liquidity may be unevenly distributed, with some price ranges under-served.
+
+**Strategy:** Target under-represented intervals by adjusting the reward range to encourage LPs to provide liquidity where it is most needed.
+
+**Benefits:**
+
+- **Balanced Liquidity Distribution:** Reduces extreme price swings and stabilizes the market.
+- **Enhanced Market Depth:** Improves overall trading stability by filling liquidity gaps.

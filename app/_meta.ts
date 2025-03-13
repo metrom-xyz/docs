@@ -13,6 +13,7 @@ const meta = {
     },
     "creating-a-campaign": "Creating a campaign",
     claim_rewards: "Claiming rewards",
+    recover_rewards: "Recovering rewards",
     _2: {
         type: "separator",
         title: "Resources",

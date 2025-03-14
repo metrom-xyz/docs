@@ -20,7 +20,7 @@ import { useCampaigns } from "@metrom-xyz/react";
 import { useCampaigns } from "@metrom-xyz/react";
 
 function App() {
-    const { loading, campaigns } = useCampaigns();
+  const { loading, campaigns } = useCampaigns();
 }
 ```
 
@@ -40,9 +40,9 @@ Optional campaign status to filter for.
 import { useCampaigns, CampaignStatus } from "@metrom-xyz/react";
 
 function App() {
-    const { loading, campaigns } = useCampaigns({
-        status: CampaignStatus.Active,
-    });
+  const { loading, campaigns } = useCampaigns({
+    status: CampaignStatus.Active,
+  });
 }
 ```
 
@@ -57,9 +57,9 @@ campaign creator if the ownership was transferred.
 import { useCampaigns } from "@metrom-xyz/react";
 
 function App() {
-    const { loading, campaigns } = useCampaigns({
-        owner: "0x0000000000000000000000000000000000000000",
-    });
+  const { loading, campaigns } = useCampaigns({
+    owner: "0x0000000000000000000000000000000000000000",
+  });
 }
 ```
 
@@ -74,9 +74,9 @@ lives in.
 import { useCampaigns } from "@metrom-xyz/react";
 
 function App() {
-    const { loading, campaigns } = useCampaigns({
-        chainId: 1,
-    });
+  const { loading, campaigns } = useCampaigns({
+    chainId: 1,
+  });
 }
 ```
 
@@ -90,9 +90,9 @@ Optional campaign targeted dex.
 import { useCampaigns, SupportedDex } from "@metrom-xyz/react";
 
 function App() {
-    const { loading, campaigns } = useCampaigns({
-        dex: SupportedDex.UniswapV3,
-    });
+  const { loading, campaigns } = useCampaigns({
+    dex: SupportedDex.UniswapV3,
+  });
 }
 ```
 

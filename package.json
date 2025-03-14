@@ -9,6 +9,7 @@
         "start": "next start",
         "lint": "next lint",
         "format": "next lint --fix",
+        "prettier": "prettier ./app --write",
         "commitlint": "commitlint -e",
         "prepare": "husky"
     },

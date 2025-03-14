@@ -1,8 +1,8 @@
 ---
 title: useClaimsTransaction
 description:
-    Hook for simulating and validating the contract interactions to claim the
-    specified rewards for an account on a given chain id.
+  Hook for simulating and validating the contract interactions to claim the
+  specified rewards for an account on a given chain id.
 ---
 
 ## useClaimsTransaction
@@ -46,9 +46,9 @@ The chain id on which the claims are performed.
 import { useClaimsTransaction } from "@metrom-xyz/react";
 
 function App() {
-    const { loading, transaction } = useClaimsTransaction({
-        chainId: 1,
-    });
+  const { loading, transaction } = useClaimsTransaction({
+    chainId: 1,
+  });
 }
 ```
 
@@ -63,14 +63,14 @@ hook.
 import { useClaimsTransaction, useClaims } from "@metrom-xyz/react";
 
 function App() {
-    const { claims } = useClaims({
-        address: "0x0000000000000000000000000000000000000000",
-    });
-    const { loading, transaction } = useClaimsTransaction({
-        chainId: 1,
-        claims: [],
-        address: "0x0000000000000000000000000000000000000000",
-    });
+  const { claims } = useClaims({
+    address: "0x0000000000000000000000000000000000000000",
+  });
+  const { loading, transaction } = useClaimsTransaction({
+    chainId: 1,
+    claims: [],
+    address: "0x0000000000000000000000000000000000000000",
+  });
 }
 ```
 

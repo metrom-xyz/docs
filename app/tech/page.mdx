@@ -18,17 +18,15 @@ based on predefined conditions.
 Campaigns in Metrom allow users to incentivize liquidity provisioning in
 specific pools by defining key parameters such as:
 
--   **Targeted pool**: The liquidity pool where incentives will be distributed.
+- **Targeted pool**: The liquidity pool where incentives will be distributed.
 
--   **Running period**: The timeframe during which rewards will be earned.
+- **Running period**: The timeframe during which rewards will be earned.
 
--   **Rewards**: Up to 5 different reward types can be specified, such as
-    tokens.
+- **Rewards**: Up to 5 different reward types can be specified, such as tokens.
 
--   **Reward distribution method**: Creators can tailor how rewards are
-    distributed, either through a pre-approved list (allowlist/blocklist) or
-    based on Key Performance Indicators (KPIs) that measure the performance of
-    LPs.
+- **Reward distribution method**: Creators can tailor how rewards are
+  distributed, either through a pre-approved list (allowlist/blocklist) or based
+  on Key Performance Indicators (KPIs) that measure the performance of LPs.
 
 ### Backend operations
 
@@ -40,9 +38,9 @@ reward distribution based on these events off-chain,.
 A Merkle tree is generated from the rewards distribution list, which is then
 securely stored:
 
--   Leaves are stored on IPFS.
+- Leaves are stored on IPFS.
 
--   Root is pushed on-chain.
+- Root is pushed on-chain.
 
 This approach allows eligible LPs to claim their rewards by providing a proof of
 inclusion to the Metrom smart contract. Rewards are allocated to active LPs
@@ -55,17 +53,17 @@ rewards.
 
 Metrom’s backend consists of three main service binaries and a shared library:
 
--   **Metronome**: The core service, responsible for indexing campaigns,
-    processing on-chain events, and assigning rewards at specified intervals. It
-    also takes regular snapshots of reward assignments, constructs a Merkle
-    tree, and ensures the root is published on-chain.
+- **Metronome**: The core service, responsible for indexing campaigns,
+  processing on-chain events, and assigning rewards at specified intervals. It
+  also takes regular snapshots of reward assignments, constructs a Merkle tree,
+  and ensures the root is published on-chain.
 
--   **API**: A warp-based service that pulls data from subgraphs and the Metrom
-    database to provide protocol-related insights to external applications.
+- **API**: A warp-based service that pulls data from subgraphs and the Metrom
+  database to provide protocol-related insights to external applications.
 
--   **KPI Tracker**: This service measures relevant KPIs such as total value
-    locked (TVL) in liquidity pools, which is crucial for calculating rewards in
-    KPI-based campaigns.
+- **KPI Tracker**: This service measures relevant KPIs such as total value
+  locked (TVL) in liquidity pools, which is crucial for calculating rewards in
+  KPI-based campaigns.
 
 ### Metronome service
 
@@ -78,9 +76,9 @@ Additionally, Metronome performs snapshotting at configurable intervals. This
 process converts the reward assignments into a Merkle tree structure, which is
 then:
 
--   Published to IPFS (and S3 for internal redundancy),
+- Published to IPFS (and S3 for internal redundancy),
 
--   The Merkle root is posted on-chain for verification.
+- The Merkle root is posted on-chain for verification.
 
 The tree format is simple and stores account addresses, reward token
 information, and the assigned reward amounts.

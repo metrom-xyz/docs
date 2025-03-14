@@ -2,7 +2,7 @@ import { compileMdx } from "nextra/compile";
 import { evaluate } from "nextra/evaluate";
 import { useMDXComponents as getMDXComponents } from "nextra-theme-docs";
 
-const { wrapper: Wrapper, ...components } = getMDXComponents();
+const { ...components } = getMDXComponents();
 
 interface RemoteMarkdownProps {
     url: string;

@@ -5,51 +5,66 @@ description: Range based incentive usecases.
 
 ## Range based incentive usecases
 
-Range‐based incentives enable protocols to direct liquidity precisely where it is needed, yielding several key advantages:
+Range‐based incentives enable protocols to direct liquidity precisely where it
+is needed, yielding several key advantages:
 
-- **Deeper liquidity:** Concentrating liquidity in the most critical zones minimizes slippage.
-- **Enhanced capital efficiency:** Incentives are used more effectively, reducing liquidity acquisition cost significantly.
-- **Improved trading experience:** Tighter spreads and robust liquidity depth lead to better prices for users.
+- **Deeper liquidity:** Concentrating liquidity in the most critical zones
+  minimizes slippage.
+- **Enhanced capital efficiency:** Incentives are used more effectively,
+  reducing liquidity acquisition cost significantly.
+- **Improved trading experience:** Tighter spreads and robust liquidity depth
+  lead to better prices for users.
 
-This targeted approach maximizes the impact of incentive programs and helps align liquidity providers’ contributions with the strategic goals of the protocol.
+This targeted approach maximizes the impact of incentive programs and helps
+align liquidity providers’ contributions with the strategic goals of the
+protocol.
 
 ## 1. Stablecoin pairs
 
-In stablecoin pools (e.g., USDC/DAI or USDC/USDT), trading predominantly occurs near the 1:1 peg.
+In stablecoin pools (e.g., USDC/DAI or USDC/USDT), trading predominantly occurs
+near the 1:1 peg.
 
-<div className="mediaWrapper">
-    ![Stable Coin Pool](/images/stable-pair.png)
-</div>
+<div className="mediaWrapper">![Stable Coin Pool](/images/stable-pair.png)</div>
 
-**Strategy:** Target rewards within a narrow range (e.g., 0.99–1.01) to concentrate liquidity around the peg.
+**Strategy:** Target rewards within a narrow range (e.g., 0.99–1.01) to
+concentrate liquidity around the peg.
 
 **Benefits:**
 
 - **Deeper liquidity at the peg:** Tighter liquidity reduces slippage.
-- **Efficient incentive spending:** Reward funds are focused on the active trading area rather than being spread thinly across the full range.
+- **Efficient incentive spending:** Reward funds are focused on the active
+  trading area rather than being spread thinly across the full range.
 
 ## 2. Yield-bearing asset pools
 
-Pools involving yield-bearing assets (e.g., WETH/wstETH) often see similar price movements due to underlying yield dynamics.
+Pools involving yield-bearing assets (e.g., WETH/wstETH) often see similar price
+movements due to underlying yield dynamics.
 
 <div className="mediaWrapper">
     ![Yield Bearing Pool](/images/staking-pool.png)
 </div>
 
-**Strategy:** Concentrate incentives in a tight band (e.g., 1.00–1.01) where the assets’ prices align.
+**Strategy:** Concentrate incentives in a tight band (e.g., 1.00–1.01) where the
+assets’ prices align.
 
 **Benefits:**
 
-- **Optimized capital efficiency:** LPs are rewarded on liquidity that is most likely to be used.
-- **Improved trading prices:** Tighter spreads lead to a better trading experience.
+- **Optimized capital efficiency:** LPs are rewarded on liquidity that is most
+  likely to be used.
+- **Improved trading prices:** Tighter spreads lead to a better trading
+  experience.
 
 ## 3. Filling liquidity gaps in volatile asset pools
 
-In volatile asset pairs, liquidity may be unevenly distributed, with some price ranges under-served.
+In volatile asset pairs, liquidity may be unevenly distributed, with some price
+ranges under-served.
 
-**Strategy:** Target under-represented intervals by adjusting the reward range to encourage LPs to provide liquidity where it is most needed.
+**Strategy:** Target under-represented intervals by adjusting the reward range
+to encourage LPs to provide liquidity where it is most needed.
 
 **Benefits:**
 
-- **Balanced liquidity distribution:** Reduces extreme price swings and stabilizes the market.
-- **Enhanced market depth:** Improves overall trading stability by filling liquidity gaps.
+- **Balanced liquidity distribution:** Reduces extreme price swings and
+  stabilizes the market.
+- **Enhanced market depth:** Improves overall trading stability by filling
+  liquidity gaps.

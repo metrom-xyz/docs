@@ -5,8 +5,9 @@ description: Introduction to Range Based Incentive campaigns.
 
 ## Understanding Range Based Incentive campaigns
 
-Range-Based Incentives enable campaign creators to direct liquidity rewards to specific price ranges within AMM pools, optimizing liquidity placement where it matters most. 
-
+Range-Based Incentives enable campaign creators to direct liquidity rewards to
+specific price ranges within AMM pools, optimizing liquidity placement where it
+matters most.
 
 ## Technical Overview
 
@@ -14,57 +15,82 @@ Range-Based Incentives enable campaign creators to direct liquidity rewards to s
 
 #### Price Ranges (Tick Ranges):
 
-- Liquidity is concentrated within discrete intervals (e.g., 0.99 – 1.005 for stablecoins).
+- Liquidity is concentrated within discrete intervals (e.g., 0.99 – 1.005 for
+  stablecoins).
 - Defined using AMM-specific tick systems (e.g., Uniswap V3’s sqrtPrice ticks).
 
 #### Liquidity Providers (LPs):
+
 - Stake tokens in targeted ranges to earn rewards.
-- Incentivized to optimize capital allocation (e.g., avoiding ranges with low trading activity).
+- Incentivized to optimize capital allocation (e.g., avoiding ranges with low
+  trading activity).
 
 #### Reward Allocation:
 
-- Campaign creators distribute rewards proportionally to liquidity provision within specified ranges.
+- Campaign creators distribute rewards proportionally to liquidity provision
+  within specified ranges.
 - Supports multiple reward tokens (e.g., protocol tokens, stablecoins).
 
 ### Tech behind calculation
 
-Each active position in the pool's range is compared to the incentivized range and its weight (i.e. liquidity contribution) is scaled proportional to the intersecting range. There are 3 cases possible here:
+Each active position in the pool's range is compared to the incentivized range
+and its weight (i.e. liquidity contribution) is scaled proportional to the
+intersecting range. There are 3 cases possible here:
 
-**The position is completely off range**: Its weight is just nullified and the position's owner is not given any reward for that position. 
+**The position is completely off range**: Its weight is just nullified and the
+position's owner is not given any reward for that position.
 
-**The position is completely in range**: The position's weight is taken as-is, depending on its liquidity density function (amount of tokens provided for the picked concentration level).
+**The position is completely in range**: The position's weight is taken as-is,
+depending on its liquidity density function (amount of tokens provided for the
+picked concentration level).
 
-**The position is partially in range**: The width of the intersection between the position's range and the incentivized range is calculated and compared to the width of the full incentivized range. The ratio of the 2 is used as a multiplier to scale down the overall weight of the position.
+**The position is partially in range**: The width of the intersection between
+the position's range and the incentivized range is calculated and compared to
+the width of the full incentivized range. The ratio of the 2 is used as a
+multiplier to scale down the overall weight of the position.
 
-These are examples for both cases, assuming we have an incentivized range going from tick 0 to tick 10 for a pool:
+These are examples for both cases, assuming we have an incentivized range going
+from tick 0 to tick 10 for a pool:
 
-- Assuming we have a **position with weight 100 that goes from tick 100 to tick 110**, that won't be taken into consideration when giving out rewards.
-- Assuming we have a **position with weight 100 that goes from tick 1 to tick 5**, that will be taken in consideration with weight 100 (i.e. in full) when giving out rewards.
-- Assuming we have a **position with weight 100 that goes from tick -10 to tick 10**, we calculate the intersecting range's width, which in this case is 10, and compare it to the full position range (20) to find out that we need to consider 50% of the position's weight, so 50.
+- Assuming we have a **position with weight 100 that goes from tick 100 to tick
+  110**, that won't be taken into consideration when giving out rewards.
+- Assuming we have a **position with weight 100 that goes from tick 1 to tick
+  5**, that will be taken in consideration with weight 100 (i.e. in full) when
+  giving out rewards.
+- Assuming we have a **position with weight 100 that goes from tick -10 to tick
+  10**, we calculate the intersecting range's width, which in this case is 10,
+  and compare it to the full position range (20) to find out that we need to
+  consider 50% of the position's weight, so 50.
 
 ### Campaign workflow
 
-1. **Define Ranges**: Campaign creators specify target price ranges (e.g., 0.99 – 1.005 for stablecoin pools).
+1. **Define Ranges**: Campaign creators specify target price ranges (e.g., 0.99
+   – 1.005 for stablecoin pools).
 
-2. **LPs Deposit Liquidity**: LPs stake tokens in the defined ranges via AMM interfaces (e.g., Uniswap V3 positions).
+2. **LPs Deposit Liquidity**: LPs stake tokens in the defined ranges via AMM
+   interfaces (e.g., Uniswap V3 positions).
 
-3. **Reward Distribution**: Rewards are distributed based on LPs’ liquidity exposure within ranges. It can be claimed via Metrom’s dashboard. 
-
+3. **Reward Distribution**: Rewards are distributed based on LPs’ liquidity
+   exposure within ranges. It can be claimed via Metrom’s dashboard.
 
 ### Comparison with traditional incentives
 
-| METRIC                                   | TRADITIONAL INCENTIVES                  | RANGE BASED INCENTIVES                  | 
-| ------------------------------------- | -------------------------------------------- | -------------------------------------------- |
-| **Liquidity Distribution** | Uniform across all ranges | <span className="greenText">Concentrated in critical zones</span> |
-| **Capital Efficiency**        | Low (wasted rewards)                                            | <span className="greenText">High (reduced slippage)</span> |
-| **User Experience**  | Suboptimal (high slippage)                                            | <span className="greenText">Improved (tighter spreads)</span>
+| METRIC                     | TRADITIONAL INCENTIVES     | RANGE BASED INCENTIVES                                            |
+| -------------------------- | -------------------------- | ----------------------------------------------------------------- |
+| **Liquidity Distribution** | Uniform across all ranges  | <span className="greenText">Concentrated in critical zones</span> |
+| **Capital Efficiency**     | Low (wasted rewards)       | <span className="greenText">High (reduced slippage)</span>        |
+| **User Experience**        | Suboptimal (high slippage) | <span className="greenText">Improved (tighter spreads)</span>     |
 
 ### Core benefits
 
-**Directed Liquidity**: Protocols can guide LPs on where their liquidity is most valuable, aligning with strategic objectives.
+**Directed Liquidity**: Protocols can guide LPs on where their liquidity is most
+valuable, aligning with strategic objectives.
 
-**Increased Efficiency**: Deep liquidity in targeted ranges reduces slippage and improves user satisfaction.
+**Increased Efficiency**: Deep liquidity in targeted ranges reduces slippage and
+improves user satisfaction.
 
-**Effective**: Protocols achieve greater liquidity for the same or even lower incentive spend, maximizing ROI.
+**Effective**: Protocols achieve greater liquidity for the same or even lower
+incentive spend, maximizing ROI.
 
-**Flexibility**: Suitable for stable, and yield-bearing pools, Range-Based Incentives adapt to diverse use cases and goals.
+**Flexibility**: Suitable for stable, and yield-bearing pools, Range-Based
+Incentives adapt to diverse use cases and goals.

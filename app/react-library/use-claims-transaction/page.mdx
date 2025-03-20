@@ -5,6 +5,8 @@ description:
   specified rewards for an account on a given chain id.
 ---
 
+import BaseParams from "../base-params.mdx";
+
 ## useClaimsTransaction
 
 Hook for simulating and validating the contract interactions to claim the
@@ -19,14 +21,51 @@ import { useClaimsTransaction } from "@metrom-xyz/react";
 ### Usage
 
 ```tsx
-import { useClaimsTransaction } from "@metrom-xyz/react";
+import { useState } from "react";
+import { useWriteContract } from "wagmi";
+import { useClaims, useClaimsTransaction } from "@metrom-xyz/react";
 
 function App() {
-    const { loading, transaction } = useClaimsTransaction({
-        chainId: 1,
-        claims: [],
-        address: "0x0000000000000000000000000000000000000000";
-    });
+  const [claiming, setClaiming] = useState(false);
+  const { writeContractAsync, isPending } = useWriteContract();
+
+  const { claims } = useClaims({
+    address: "0x0000000000000000000000000000000000000000",
+  });
+
+  const { loading, transaction } = useClaimsTransaction({
+    chainId: 1,
+    claims,
+    address: "0x0000000000000000000000000000000000000000",
+  });
+
+  function claimRewards() {
+    if (!transaction) return;
+
+    const claim = async () => {
+      setClaiming(true);
+
+      try {
+        await writeContractAsync(transaction.request);
+      } catch (error) {
+        console.warn("Could not claim rewards", error);
+      } finally {
+        setClaiming(false);
+      }
+    };
+
+    void claim();
+  }
+
+  if (loading || isPending) return <div>loading...</div>;
+
+  return (
+    <div>
+      <button onClick={claimRewards} disabled={!transaction || claiming}>
+        Claim rewards
+      </button>
+    </div>
+  );
 }
 ```
 
@@ -66,9 +105,10 @@ function App() {
   const { claims } = useClaims({
     address: "0x0000000000000000000000000000000000000000",
   });
+
   const { loading, transaction } = useClaimsTransaction({
     chainId: 1,
-    claims: [],
+    claims,
     address: "0x0000000000000000000000000000000000000000",
   });
 }
@@ -84,3 +124,18 @@ wagmi.
 ```ts
 import { type UseClaimsTransactionReturnValue } from "@metrom-xyz/react";
 ```
+
+<BaseParams />
+
+#### error
+
+`SimulateContractErrorType | null`
+
+Claims transaction simulation error. Defaults to `null`.
+
+#### transaction
+
+`ClaimRewardsSimulationResult | undefined`
+
+Validated transaction data that can be submitted on chain. Defaults to
+`undefined`.

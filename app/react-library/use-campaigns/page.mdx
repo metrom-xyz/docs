@@ -3,6 +3,8 @@ title: useCampaigns
 description: Hook for fetching all the valid campaigns on Metrom.
 ---
 
+import BaseParams from "../base-params.mdx";
+
 ## useCampaigns
 
 Hook for fetching all the valid campaigns that have been created on Metrom.
@@ -21,6 +23,22 @@ import { useCampaigns } from "@metrom-xyz/react";
 
 function App() {
   const { loading, campaigns } = useCampaigns();
+
+  if (loading) return <div>loading...</div>;
+
+  if (!campaigns) return <div>no campaigns</div>;
+
+  return (
+    <div>
+      {campaigns.map((campaign) => (
+        <div key={campaign.id}>
+          <p>{campaign.chainId}</p>
+          <p>{campaign.from}</p>
+          <p>{campaign.to}</p>
+        </div>
+      ))}
+    </div>
+  );
 }
 ```
 
@@ -101,3 +119,11 @@ function App() {
 ```ts
 import { type UseCampaignsReturnValue } from "@metrom-xyz/react";
 ```
+
+<BaseParams />
+
+#### campaigns
+
+`Campaign[] | undefined`
+
+List of fetched campaigns. Defaults to `undefiend`.

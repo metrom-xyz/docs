@@ -3,6 +3,8 @@ title: useClaims
 description: Hook for fetching the available claims for an account.
 ---
 
+import BaseParams from "../base-params.mdx";
+
 ## useClaims
 
 Hook for fetching the available claims for an account.
@@ -20,6 +22,22 @@ import { useClaims } from "@metrom-xyz/react";
 
 function App() {
   const { loading, claims } = useClaims();
+
+  if (loading) return <div>loading...</div>;
+
+  if (claims.length === 0) return <div>no claims</div>;
+
+  return (
+    <div>
+      {claims.map((claims) => (
+        <div key={claims.id}>
+          <p>{claims.campaignId}</p>
+          <p>{claims.token.symbol}</p>
+          <p>{claims.amount.formatted}</p>
+        </div>
+      ))}
+    </div>
+  );
 }
 ```
 
@@ -50,3 +68,11 @@ function App() {
 ```ts
 import { type UseClaimsReturnValue } from "@metrom-xyz/react";
 ```
+
+<BaseParams />
+
+#### claims
+
+`ClaimWithRemaining[] | []`
+
+List of claims available for the provided address. Defaults to `[]`.

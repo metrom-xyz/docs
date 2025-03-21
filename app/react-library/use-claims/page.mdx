@@ -3,7 +3,7 @@ title: useClaims
 description: Hook for fetching the available claims for an account.
 ---
 
-import BaseParams from "../base-params.mdx";
+import BaseReturnType from "../base-return-type.mdx";
 
 ## useClaims
 
@@ -21,7 +21,9 @@ import { useClaims } from "@metrom-xyz/react";
 import { useClaims } from "@metrom-xyz/react";
 
 function App() {
-  const { loading, claims } = useClaims();
+  const { loading, claims } = useClaims({
+    address: "0x0000000000000000000000000000000000000000",
+  });
 
   if (loading) return <div>loading...</div>;
 
@@ -69,7 +71,7 @@ function App() {
 import { type UseClaimsReturnValue } from "@metrom-xyz/react";
 ```
 
-<BaseParams />
+<BaseReturnType />
 
 #### claims
 

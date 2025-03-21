@@ -3,7 +3,7 @@ title: useCampaigns
 description: Hook for fetching all the valid campaigns on Metrom.
 ---
 
-import BaseParams from "../base-params.mdx";
+import BaseReturnType from "../base-return-type.mdx";
 
 ## useCampaigns
 
@@ -52,7 +52,7 @@ import { type UseCampaignsParams } from "@metrom-xyz/react";
 
 `CampaignStatus | undefined`
 
-Optional campaign status to filter for.
+Optional campaign status to filter for. Defaults to `undefined`.
 
 ```tsx
 import { useCampaigns, CampaignStatus } from "@metrom-xyz/react";
@@ -69,7 +69,7 @@ function App() {
 `Address | undefined`
 
 Optional campaign owner to filter for; the owner can be different from the
-campaign creator if the ownership was transferred.
+campaign creator if the ownership was transferred. Defaults to `undefined`.
 
 ```tsx
 import { useCampaigns } from "@metrom-xyz/react";
@@ -86,7 +86,7 @@ function App() {
 `number | undefined`
 
 Optional campaign chain id to filter for; the chain id is where the campaign
-lives in.
+lives in. Defaults to `undefined`.
 
 ```tsx
 import { useCampaigns } from "@metrom-xyz/react";
@@ -102,7 +102,7 @@ function App() {
 
 `SupportedDex | undefined`
 
-Optional campaign targeted dex.
+Optional campaign targeted dex. Defaults to `undefined`.
 
 ```tsx
 import { useCampaigns, SupportedDex } from "@metrom-xyz/react";
@@ -120,7 +120,7 @@ function App() {
 import { type UseCampaignsReturnValue } from "@metrom-xyz/react";
 ```
 
-<BaseParams />
+<BaseReturnType />
 
 #### campaigns
 

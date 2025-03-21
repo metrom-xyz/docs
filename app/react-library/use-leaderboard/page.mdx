@@ -1,0 +1,143 @@
+---
+title: useLeaderboard
+description:
+  Hook for fetching the top 5 accounts with the most received tokens/points,
+  given a campaign.
+---
+
+import BaseReturnType from "../base-return-type.mdx";
+
+## useLeaderboard
+
+Hook for retrieving the top 5 accounts that have received the most tokens or
+points in a given campaign.
+
+It's possible to also specify an address to ensure it appears in the
+leaderboard, which is useful for displaying the rank of the currently connected
+account.
+
+### Import
+
+```ts
+import { useLeaderboard } from "@metrom-xyz/react";
+```
+
+### Usage
+
+```tsx
+import { useCampaign, useLeaderboard } from "@metrom-xyz/react";
+
+function App() {
+  const { loading: loadingCampaign, campaign } = useCampaign({
+    chainId: 1,
+    id: "0xa8b1dc25d4ea47406771c4db401455a5d8b377dff381e2aea2722084808b4b47",
+  });
+
+  const { loading: loadingLeaderboard, leaderboard } = useLeaderboard({
+    campaign,
+    address: "0x0000000000000000000000000000000000000000",
+  });
+
+  if (loadingCampaign || loadingLeaderboard) return <div>loading...</div>;
+
+  if (!leaderboard) return <div>no distribution yet</div>;
+
+  return (
+    <div>
+      <p>Last distribution: {leaderboard.timestamp}</p>
+      <p>
+        Your rank: #{leaderboard.connectedAccountRank.position}
+        {leaderboard.connectedAccountRank.weight}
+      </p>
+      {leaderboard.sortedRanks.map((rank, i) => (
+        <div key={rank.account}>
+          <p>
+            Rank: #{i + 1} {rank.weight}
+          </p>
+          {rank.distributed instanceof Array ? (
+            <div>
+              {/* Campaign with token rewards have an array of distributed tokens */}
+            </div>
+          ) : (
+            <div>
+              {/* Campaign with point rewards have a single distributed object */}
+            </div>
+          )}
+        </div>
+      ))}
+    </div>
+  );
+}
+```
+
+### Parameters
+
+```ts
+import { type UseLeaderboardParams } from "@metrom-xyz/react";
+```
+
+#### campaignId
+
+`Hex | undefined`
+
+Id of the campaign for which to fetch the leaderboard. Defaults to `undefined`.
+
+```tsx
+import { useLeaderboard } from "@metrom-xyz/react";
+
+function App() {
+  const { loading, leaderboard } = useLeaderboard({
+    campaignId:
+      "0xa8b1dc25d4ea47406771c4db401455a5d8b377dff381e2aea2722084808b4b47",
+  });
+}
+```
+
+#### chainId
+
+`number | undefined`
+
+Chain id of the campaign; the chain id is where the campaign lives in. Defaults
+to `undefiend`.
+
+```tsx
+import { useLeaderboard } from "@metrom-xyz/react";
+
+function App() {
+  const { loading, leaderboard } = useLeaderboard({
+    chainId: 1,
+  });
+}
+```
+
+#### address
+
+`Address | undefined`
+
+The address that has to be included in the leaderboard, ususally the currently
+connected account. Defaults to `undefined`.
+
+```tsx
+import { useLeaderboard } from "@metrom-xyz/react";
+
+function App() {
+  const { loading, leaderboard } = useLeaderboard({
+    address: "0x0000000000000000000000000000000000000000",
+  });
+}
+```
+
+### Return Type
+
+```ts
+import { type useLeaderboard } from "@metrom-xyz/react";
+```
+
+<BaseReturnType />
+
+#### leaderboard
+
+`Leaderboard | undefined`
+
+Leaderboard containing the latest rewards distribution time, the top 5 most
+rewarded accounts, and the connected account rank (if the address was provided).

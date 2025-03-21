@@ -1,0 +1,94 @@
+---
+title: useCampaign
+description: Hook for fetching a single campaigns on Metrom.
+---
+
+import BaseReturnType from "../base-return-type.mdx";
+
+## useCampaign
+
+Hook for fetching a single valid campaign that has been created on Metrom.
+
+### Import
+
+```ts
+import { useCampaign } from "@metrom-xyz/react";
+```
+
+### Usage
+
+```tsx
+import { useCampaign } from "@metrom-xyz/react";
+
+function App() {
+  const { loading, campaign } = useCampaign({
+    chainId: 1,
+    id: "0xa8b1dc25d4ea47406771c4db401455a5d8b377dff381e2aea2722084808b4b47",
+  });
+
+  if (loading) return <div>loading...</div>;
+
+  if (!campaign) return <div>campaign not found</div>;
+
+  return (
+    <div>
+      <p>{campaign.chainId}</p>
+      <p>{campaign.from}</p>
+      <p>{campaign.to}</p>
+    </div>
+  );
+}
+```
+
+### Parameters
+
+```ts
+import { type useCampaignParams } from "@metrom-xyz/react";
+```
+
+#### chainId
+
+`number | undefined`
+
+Chain id of the campaign; the chain id is where the campaign lives in. Defaults
+to `undefiend`.
+
+```tsx
+import { useCampaign } from "@metrom-xyz/react";
+
+function App() {
+  const { loading, campaign } = useCampaign({
+    chainId: 1,
+  });
+}
+```
+
+#### id
+
+`Hex | undefined`
+
+Id of the campaign.Defaults to `undefiend`.
+
+```tsx
+import { useCampaign } from "@metrom-xyz/react";
+
+function App() {
+  const { loading, campaign } = useCampaign({
+    id: "0xa8b1dc25d4ea47406771c4db401455a5d8b377dff381e2aea2722084808b4b47",
+  });
+}
+```
+
+### Return Type
+
+```ts
+import { type useCampaignReturnValue } from "@metrom-xyz/react";
+```
+
+<BaseReturnType />
+
+#### campaign
+
+`Campaign | undefined`
+
+Fetched campaign. Defaults to `undefiend`.

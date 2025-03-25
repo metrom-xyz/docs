@@ -3,7 +3,8 @@ title: useCampaign
 description: Hook for fetching a single campaign on Metrom.
 ---
 
-import BaseReturnType from "../base-return-type.mdx";
+import QueryResult from "../query-result.mdx";
+import QueryOptions from "../query-options.mdx";
 
 ## useCampaign
 
@@ -21,20 +22,20 @@ import { useCampaign } from "@metrom-xyz/react";
 import { useCampaign } from "@metrom-xyz/react";
 
 function App() {
-  const { loading, campaign } = useCampaign({
+  const { isLoading, data } = useCampaign({
     chainId: 1,
     id: "0xa8b1dc25d4ea47406771c4db401455a5d8b377dff381e2aea2722084808b4b47",
   });
 
-  if (loading) return <div>loading...</div>;
+  if (isLoading) return <div>loading...</div>;
 
-  if (!campaign) return <div>campaign not found</div>;
+  if (!data) return <div>campaign not found</div>;
 
   return (
     <div>
-      <p>{campaign.chainId}</p>
-      <p>{campaign.from}</p>
-      <p>{campaign.to}</p>
+      <p>{data.chainId}</p>
+      <p>{data.from}</p>
+      <p>{data.to}</p>
     </div>
   );
 }
@@ -57,7 +58,7 @@ to `undefiend`.
 import { useCampaign } from "@metrom-xyz/react";
 
 function App() {
-  const { loading, campaign } = useCampaign({
+  const { isLoading, data } = useCampaign({
     chainId: 1,
   });
 }
@@ -73,11 +74,13 @@ Id of the campaign.Defaults to `undefiend`.
 import { useCampaign } from "@metrom-xyz/react";
 
 function App() {
-  const { loading, campaign } = useCampaign({
+  const { isLoading, data } = useCampaign({
     id: "0xa8b1dc25d4ea47406771c4db401455a5d8b377dff381e2aea2722084808b4b47",
   });
 }
 ```
+
+<QueryOptions />
 
 ### Return Type
 
@@ -85,10 +88,10 @@ function App() {
 import { type useCampaignReturnValue } from "@metrom-xyz/react";
 ```
 
-<BaseReturnType />
-
-#### campaign
+#### data
 
 `Campaign | undefined`
 
 Fetched campaign. Defaults to `undefiend`.
+
+<QueryResult />

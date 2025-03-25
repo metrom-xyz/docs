@@ -1,0 +1,18 @@
+#### isPending
+
+`boolean`
+
+Is true whenever there's no cached data and no query attempt was finished yet.
+
+#### isLoading
+
+`boolean`
+
+Is true whenever the first fetch for a query is in-flight.
+
+#### isFetching
+
+`boolean`
+
+Is true whenever the queryFn is executing, which includes initial pending as
+well as background refetches.

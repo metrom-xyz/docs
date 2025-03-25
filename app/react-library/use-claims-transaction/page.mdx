@@ -5,7 +5,8 @@ description:
   specified rewards for an account on a given chain id.
 ---
 
-import BaseReturnType from "../base-return-type.mdx";
+import QueryResult from "../query-result.mdx";
+import QueryOptions from "../query-options.mdx";
 
 ## useClaimsTransaction
 
@@ -27,13 +28,13 @@ import { useClaims, useClaimsTransaction } from "@metrom-xyz/react";
 
 function App() {
   const [claiming, setClaiming] = useState(false);
-  const { writeContractAsync, isPending } = useWriteContract();
+  const { writeContractAsync } = useWriteContract();
 
-  const { claims } = useClaims({
+  const { data: claims } = useClaims({
     address: "0x0000000000000000000000000000000000000000",
   });
 
-  const { loading, transaction } = useClaimsTransaction({
+  const { isLoading, data: transaction } = useClaimsTransaction({
     chainId: 1,
     claims,
     address: "0x0000000000000000000000000000000000000000",
@@ -57,7 +58,7 @@ function App() {
     void claim();
   }
 
-  if (loading || isPending) return <div>loading...</div>;
+  if (isLoading) return <div>loading...</div>;
 
   return (
     <div>
@@ -85,7 +86,7 @@ The chain id on which the claims are performed.
 import { useClaimsTransaction } from "@metrom-xyz/react";
 
 function App() {
-  const { loading, transaction } = useClaimsTransaction({
+  const { isLoading, data } = useClaimsTransaction({
     chainId: 1,
   });
 }
@@ -102,17 +103,19 @@ hook.
 import { useClaimsTransaction, useClaims } from "@metrom-xyz/react";
 
 function App() {
-  const { claims } = useClaims({
+  const { data: claims } = useClaims({
     address: "0x0000000000000000000000000000000000000000",
   });
 
-  const { loading, transaction } = useClaimsTransaction({
+  const { isLoading, data } = useClaimsTransaction({
     chainId: 1,
     claims,
     address: "0x0000000000000000000000000000000000000000",
   });
 }
 ```
+
+<QueryOptions />
 
 ### Return Type
 
@@ -125,7 +128,12 @@ wagmi.
 import { type UseClaimsTransactionReturnValue } from "@metrom-xyz/react";
 ```
 
-<BaseReturnType />
+#### data
+
+`ClaimRewardsSimulationResult | undefined`
+
+Validated transaction data that can be submitted on chain. Defaults to
+`undefined`.
 
 #### error
 
@@ -133,9 +141,4 @@ import { type UseClaimsTransactionReturnValue } from "@metrom-xyz/react";
 
 Claims transaction simulation error. Defaults to `null`.
 
-#### transaction
-
-`ClaimRewardsSimulationResult | undefined`
-
-Validated transaction data that can be submitted on chain. Defaults to
-`undefined`.
+<QueryResult />

@@ -3,7 +3,8 @@ title: useCampaigns
 description: Hook for fetching all the valid campaigns on Metrom.
 ---
 
-import BaseReturnType from "../base-return-type.mdx";
+import QueryResult from "../query-result.mdx";
+import QueryOptions from "../query-options.mdx";
 
 ## useCampaigns
 
@@ -22,15 +23,15 @@ import { useCampaigns } from "@metrom-xyz/react";
 import { useCampaigns } from "@metrom-xyz/react";
 
 function App() {
-  const { loading, campaigns } = useCampaigns();
+  const { isLoading, data } = useCampaigns();
 
-  if (loading) return <div>loading...</div>;
+  if (isLoading) return <div>loading...</div>;
 
-  if (!campaigns) return <div>no campaigns</div>;
+  if (!data) return <div>no campaigns</div>;
 
   return (
     <div>
-      {campaigns.map((campaign) => (
+      {data.map((campaign) => (
         <div key={campaign.id}>
           <p>{campaign.chainId}</p>
           <p>{campaign.from}</p>
@@ -58,7 +59,7 @@ Optional campaign status to filter for. Defaults to `undefined`.
 import { useCampaigns, CampaignStatus } from "@metrom-xyz/react";
 
 function App() {
-  const { loading, campaigns } = useCampaigns({
+  const { isLoading, data } = useCampaigns({
     status: CampaignStatus.Active,
   });
 }
@@ -75,7 +76,7 @@ campaign creator if the ownership was transferred. Defaults to `undefined`.
 import { useCampaigns } from "@metrom-xyz/react";
 
 function App() {
-  const { loading, campaigns } = useCampaigns({
+  const { isLoading, data } = useCampaigns({
     owner: "0x0000000000000000000000000000000000000000",
   });
 }
@@ -92,7 +93,7 @@ lives in. Defaults to `undefined`.
 import { useCampaigns } from "@metrom-xyz/react";
 
 function App() {
-  const { loading, campaigns } = useCampaigns({
+  const { isLoading, data } = useCampaigns({
     chainId: 1,
   });
 }
@@ -108,11 +109,13 @@ Optional campaign targeted dex. Defaults to `undefined`.
 import { useCampaigns, SupportedDex } from "@metrom-xyz/react";
 
 function App() {
-  const { loading, campaigns } = useCampaigns({
+  const { isLoading, data } = useCampaigns({
     dex: SupportedDex.UniswapV3,
   });
 }
 ```
+
+<QueryOptions />
 
 ### Return Type
 
@@ -120,10 +123,10 @@ function App() {
 import { type UseCampaignsReturnValue } from "@metrom-xyz/react";
 ```
 
-<BaseReturnType />
-
-#### campaigns
+#### data
 
 `Campaign[] | undefined`
 
 List of fetched campaigns. Defaults to `undefiend`.
+
+<QueryResult />

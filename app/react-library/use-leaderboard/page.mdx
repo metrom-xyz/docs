@@ -5,7 +5,8 @@ description:
   a given campaign.
 ---
 
-import BaseReturnType from "../base-return-type.mdx";
+import QueryResult from "../query-result.mdx";
+import QueryOptions from "../query-options.mdx";
 
 ## useLeaderboard
 
@@ -25,31 +26,28 @@ import { useLeaderboard } from "@metrom-xyz/react";
 ### Usage
 
 ```tsx
-import { useCampaign, useLeaderboard } from "@metrom-xyz/react";
+import { useLeaderboard } from "@metrom-xyz/react";
 
 function App() {
-  const { loading: loadingCampaign, campaign } = useCampaign({
+  const { isLoading, data } = useLeaderboard({
     chainId: 1,
-    id: "0xa8b1dc25d4ea47406771c4db401455a5d8b377dff381e2aea2722084808b4b47",
-  });
-
-  const { loading: loadingLeaderboard, leaderboard } = useLeaderboard({
-    campaign,
+    campaignId:
+      "0xa8b1dc25d4ea47406771c4db401455a5d8b377dff381e2aea2722084808b4b47",
     address: "0x0000000000000000000000000000000000000000",
   });
 
-  if (loadingCampaign || loadingLeaderboard) return <div>loading...</div>;
+  if (isLoading) return <div>loading...</div>;
 
-  if (!leaderboard) return <div>no distribution yet</div>;
+  if (!data) return <div>no distribution yet</div>;
 
   return (
     <div>
-      <p>Last distribution: {leaderboard.timestamp}</p>
+      <p>Last distribution: {data.timestamp}</p>
       <p>
-        Your rank: #{leaderboard.connectedAccountRank.position}
-        {leaderboard.connectedAccountRank.weight}
+        Your rank: #{data.connectedAccountRank.position}
+        {data.connectedAccountRank.weight}
       </p>
-      {leaderboard.sortedRanks.map((rank, i) => (
+      {data.sortedRanks.map((rank, i) => (
         <div key={rank.account}>
           <p>
             Rank: #{i + 1} {rank.weight}
@@ -86,7 +84,7 @@ Id of the campaign for which to fetch the leaderboard. Defaults to `undefined`.
 import { useLeaderboard } from "@metrom-xyz/react";
 
 function App() {
-  const { loading, leaderboard } = useLeaderboard({
+  const { isLoading, data } = useLeaderboard({
     campaignId:
       "0xa8b1dc25d4ea47406771c4db401455a5d8b377dff381e2aea2722084808b4b47",
   });
@@ -104,7 +102,7 @@ to `undefiend`.
 import { useLeaderboard } from "@metrom-xyz/react";
 
 function App() {
-  const { loading, leaderboard } = useLeaderboard({
+  const { isLoading, data } = useLeaderboard({
     chainId: 1,
   });
 }
@@ -121,11 +119,13 @@ connected account. Defaults to `undefined`.
 import { useLeaderboard } from "@metrom-xyz/react";
 
 function App() {
-  const { loading, leaderboard } = useLeaderboard({
+  const { isLoading, data } = useLeaderboard({
     address: "0x0000000000000000000000000000000000000000",
   });
 }
 ```
+
+<QueryOptions />
 
 ### Return Type
 
@@ -133,11 +133,12 @@ function App() {
 import { type useLeaderboard } from "@metrom-xyz/react";
 ```
 
-<BaseReturnType />
-
-#### leaderboard
+#### data
 
 `Leaderboard | undefined`
 
 Leaderboard containing the latest rewards distribution time, the top 5 most
 rewarded accounts, and the connected account rank (if the address was provided).
+Defaults to `undefiend`.
+
+<QueryResult />

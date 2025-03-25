@@ -3,7 +3,8 @@ title: useClaims
 description: Hook for fetching the available claims for an account.
 ---
 
-import BaseReturnType from "../base-return-type.mdx";
+import QueryResult from "../query-result.mdx";
+import QueryOptions from "../query-options.mdx";
 
 ## useClaims
 
@@ -21,21 +22,21 @@ import { useClaims } from "@metrom-xyz/react";
 import { useClaims } from "@metrom-xyz/react";
 
 function App() {
-  const { loading, claims } = useClaims({
+  const { isLoading, data } = useClaims({
     address: "0x0000000000000000000000000000000000000000",
   });
 
-  if (loading) return <div>loading...</div>;
+  if (isLoading) return <div>loading...</div>;
 
-  if (claims.length === 0) return <div>no claims</div>;
+  if (data.length === 0) return <div>no claims</div>;
 
   return (
     <div>
-      {claims.map((claims) => (
-        <div key={claims.id}>
-          <p>{claims.campaignId}</p>
-          <p>{claims.token.symbol}</p>
-          <p>{claims.amount.formatted}</p>
+      {data.map((claim) => (
+        <div key={claim.id}>
+          <p>{claim.campaignId}</p>
+          <p>{claim.token.symbol}</p>
+          <p>{claim.amount.formatted}</p>
         </div>
       ))}
     </div>
@@ -59,11 +60,13 @@ The wallet address of the receiver account.
 import { useClaims } from "@metrom-xyz/react";
 
 function App() {
-  const { loading, claims } = useClaims({
+  const { isLoading, data } = useClaims({
     address: "0x0000000000000000000000000000000000000000",
   });
 }
 ```
+
+<QueryOptions />
 
 ### Return Type
 
@@ -71,10 +74,10 @@ function App() {
 import { type UseClaimsReturnValue } from "@metrom-xyz/react";
 ```
 
-<BaseReturnType />
+#### data
 
-#### claims
+`ClaimWithRemaining[] | undefined`
 
-`ClaimWithRemaining[] | []`
+List of claims available for the provided address. Defaults to `undefined`.
 
-List of claims available for the provided address. Defaults to `[]`.
+<QueryResult />

@@ -14,19 +14,21 @@ const meta = {
     "creating-a-campaign": "Creating a campaign",
     "claim-rewards": "Claiming rewards",
     "recover-rewards": "Recovering rewards",
+    "using-safe-app": "Using Safe app",
     _2: {
         type: "separator",
         title: "Resources",
     },
     roadmap: "Roadmap",
-    "brand-assets": "Brand assets",
     "supported-dexes": "Supported DEXes",
     audits: "Audits and tests",
+    "brand-assets": "Brand assets",
     _3: {
         type: "separator",
         title: "Developers",
     },
-    tech: "Tech",
+    // TODO: update or remove tech section
+    // tech: "Tech",
     "react-library": "React library",
 };
 

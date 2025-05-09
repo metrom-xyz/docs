@@ -1,2 +1,66 @@
-# Add customizable Reward Ratio
+# Add Reward Ratio
 
+
+Precision‑tune how incentives flow to liquidity providers—no custom contracts required.
+
+### What is Reward Ratio?
+Reward Ratio is an optional toggle in the Metrom campaign builder that lets you split emissions across **Token A**, **Token B**, and **Fees generated** instead of paying every position the same flat APR.
+
+
+### How it works under the hood
+
+You're not locked into a 50/50 split. Pick exactly which behaviour you want to incentivise by assigning a ratio to three separate inputs:
+
+- **Token A** – rewards LPs for providing depth on the first asset
+
+- **Token B** – rewards LPs for providing depth on the second asset
+
+- **Fees** – rewards positions that are earning (i.e., in‑range, concentrated liquidity)
+
+**Example:**
+
+- A ratio of **Token A** - 0.3 | **Token B** - 0.3 | **Fees** - 0.4 means:
+
+- 30 % of each epoch's rewards are distributed based on the amount of Token A in the position
+
+- 30 % based on Token B
+
+- 40 % based on fees earned
+
+> **Note:** Reward Ratio only distributes to active, in‑range liquidity—out‑of‑range TVL earns nothing. Metrom automatically normalises ratios if they don't add up to exactly 1.
+
+
+
+### Enabling Reward Ratio
+
+![Reward Ratio Setup](/videos/reward-ratio-setup.gif)
+
+1. **Create** a campaign → **Rewards tab**.
+2. Toggle **Reward Ratio**.
+3. **Enter percentages that sum to 100 %**. 
+
+Example:
+
+ - "tokenA": 30,
+ -  "tokenB": 30,
+ -  "fees"  : 0.4
+
+4. That's it—no further action needed. You can now proceed to enabling KPI or Range Based incentives or directly jump to the Campaign Preview. 
+
+### FAQs
+
+#### Do ratios have to total 100 %?
+Yes. If they don't, the UI warns you and Metrom normalises them before committing on‑chain.
+
+#### Does this work with Points campaigns?
+Yes it does work with the Points campaign. 
+
+#### What if my pool has custom tokens?
+Reward Ratio is agnostic to token types; simply map the sides you want to incentivise.
+
+
+---
+
+Ready to deploy? Head over to your [dashboard](https://app.metrom.xyz/en/campaigns/create/amm-pool-liquidity) and flip on **Reward Ratio**.
+
+Need help? Join the conversation in our [Discord](https://discord.com/invite/S2kBEAGWbM) or email hello@metrom.xyz.

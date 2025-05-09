@@ -1,35 +1,40 @@
 # Add Reward Ratio
 
-
-Precision‑tune how incentives flow to liquidity providers—no custom contracts required.
+Precision‑tune how incentives flow to liquidity providers—no custom contracts
+required.
 
 ### What is Reward Ratio?
-Reward Ratio is an optional toggle in the Metrom campaign builder that lets you split emissions across **Token A**, **Token B**, and **Fees generated** instead of paying every position the same flat APR.
 
+Reward Ratio is an optional toggle in the Metrom campaign builder that lets you
+split emissions across **Token A**, **Token B**, and **Fees generated** instead
+of paying every position the same flat APR.
 
 ### How it works under the hood
 
-You're not locked into a 50/50 split. Pick exactly which behaviour you want to incentivise by assigning a ratio to three separate inputs:
+You're not locked into a 50/50 split. Pick exactly which behaviour you want to
+incentivise by assigning a ratio to three separate inputs:
 
 - **Token A** – rewards LPs for providing depth on the first asset
 
 - **Token B** – rewards LPs for providing depth on the second asset
 
-- **Fees** – rewards positions that are earning (i.e., in‑range, concentrated liquidity)
+- **Fees** – rewards positions that are earning (i.e., in‑range, concentrated
+  liquidity)
 
 **Example:**
 
 - A ratio of **Token A** - 0.3 | **Token B** - 0.3 | **Fees** - 0.4 means:
 
-- 30 % of each epoch's rewards are distributed based on the amount of Token A in the position
+- 30 % of each epoch's rewards are distributed based on the amount of Token A in
+  the position
 
 - 30 % based on Token B
 
 - 40 % based on fees earned
 
-> **Note**: The Reward Ratio applies only to active, in-range liquidity—TVL that is out of range earns no rewards. Metrom automatically normalizes ratios if they do not sum exactly to 1.
-
-
+> **Note**: The Reward Ratio applies only to active, in-range liquidity—TVL that
+> is out of range earns no rewards. Metrom automatically normalizes ratios if
+> they do not sum exactly to 1.
 
 ### Enabling Reward Ratio
 
@@ -37,30 +42,38 @@ You're not locked into a 50/50 split. Pick exactly which behaviour you want to i
 
 1. **Create** a campaign → **Rewards tab**.
 2. Toggle **Reward Ratio**.
-3. **Enter percentages for the respective tokens**. 
+3. **Enter percentages for the respective tokens**.
 
 Example:
 
- - **token A**: 30%
- - **token B**: 30%
- - **fees**  : 40%
+- **token A**: 30%
+- **token B**: 30%
+- **fees** : 40%
 
-4. That’s it—no further action needed. You can now **enable KPI** or **Range-based incentives**, or skip ahead to the **Campaign Preview**. 
+4. That’s it—no further action needed. You can now **enable KPI** or
+   **Range-based incentives**, or skip ahead to the **Campaign Preview**.
 
 ### FAQs
 
 #### Do ratios have to total 100 %?
-Yes. If they don't, the UI warns you and Metrom normalises them before committing on‑chain.
+
+Yes. If they don't, the UI warns you and Metrom normalises them before
+committing on‑chain.
 
 #### Does this work with Points campaigns?
-Yes it does work with the Points campaign. 
+
+Yes it does work with the Points campaign.
 
 #### What if my pool has custom tokens?
-Reward Ratio is agnostic to token types; simply map the sides you want to incentivise.
 
+Reward Ratio is agnostic to token types; simply map the sides you want to
+incentivise.
 
 ---
 
-Ready to deploy? Head over to your [dashboard](https://app.metrom.xyz/en/campaigns/create/amm-pool-liquidity) and flip on **Reward Ratio**.
+Ready to deploy? Head over to your
+[dashboard](https://app.metrom.xyz/en/campaigns/create/amm-pool-liquidity) and
+flip on **Reward Ratio**.
 
-Need help? Join the conversation in our [Discord](https://discord.com/invite/S2kBEAGWbM) or email hello@metrom.xyz.
+Need help? Join the conversation in our
+[Discord](https://discord.com/invite/S2kBEAGWbM) or email hello@metrom.xyz.

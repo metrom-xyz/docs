@@ -13,10 +13,14 @@ const meta = {
     },
     "creating-a-campaign": "Creating a campaign",
     points: "Incentivize with Points",
-    "claim-rewards": "Claiming rewards",
     "recover-rewards": "Recovering rewards",
     "using-safe-app": "Using Safe app",
     _2: {
+        type: "separator",
+        title: "For Liquidity Providers",
+    },
+    "claim-rewards": "Claiming rewards",
+    _3: {
         type: "separator",
         title: "Resources",
     },
@@ -24,7 +28,7 @@ const meta = {
     "supported-dexes": "Supported DEXes",
     audits: "Audits and tests",
     "brand-assets": "Brand assets",
-    _3: {
+    _4: {
         type: "separator",
         title: "Developers",
     },

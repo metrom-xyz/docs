@@ -115,6 +115,29 @@ function App() {
 }
 ```
 
+#### address
+
+`Address | undefined`
+
+The account address eligible to receive the claims (the receiver). The
+`useClaims` hook won’t run until an `address` is provided.
+
+```tsx
+import { useClaimsTransaction, useClaims } from "@metrom-xyz/react";
+
+function App() {
+  const { data: claims } = useClaims({
+    address: "0x0000000000000000000000000000000000000000",
+  });
+
+  const { isLoading, data } = useClaimsTransaction({
+    chainId: 1,
+    claims,
+    address: "0x0000000000000000000000000000000000000000",
+  });
+}
+```
+
 <QueryOptions />
 
 ### Return Type

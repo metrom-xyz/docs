@@ -19,11 +19,12 @@ import { useCampaign } from "@metrom-xyz/react";
 ### Usage
 
 ```tsx
-import { useCampaign } from "@metrom-xyz/react";
+import { useCampaign, type ChainType } from "@metrom-xyz/react";
 
 function App() {
   const { isLoading, data } = useCampaign({
     chainId: 1,
+    chainType: ChainType.Evm,
     id: "0xa8b1dc25d4ea47406771c4db401455a5d8b377dff381e2aea2722084808b4b47",
   });
 
@@ -45,6 +46,23 @@ function App() {
 
 ```ts
 import { type useCampaignParams } from "@metrom-xyz/react";
+```
+
+#### chainType
+
+`ChainType | undefined`
+
+Chain type of the campaign. Defaults to `evm`.
+
+```tsx
+import { useCampaign, type ChainType } from "@metrom-xyz/react";
+
+function App() {
+  const { isLoading, data } = useCampaign({
+    chainId: 1,
+    chainType: ChainType.Evm,
+  });
+}
 ```
 
 #### chainId

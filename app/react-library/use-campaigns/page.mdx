@@ -20,10 +20,14 @@ import { useCampaigns } from "@metrom-xyz/react";
 ### Usage
 
 ```tsx
-import { useCampaigns } from "@metrom-xyz/react";
+import { useCampaigns, CampaignType } from "@metrom-xyz/react";
 
 function App() {
-  const { isLoading, data } = useCampaigns();
+  const { isLoading, data } = useCampaigns({
+    page: 1,
+    pageSize: 10,
+    type: CampaignType.Rewards,
+  });
 
   if (isLoading) return <div>loading...</div>;
 
@@ -31,7 +35,7 @@ function App() {
 
   return (
     <div>
-      {data.map((campaign) => (
+      {data.campaigns.map((campaign) => (
         <div key={campaign.id}>
           <p>{campaign.chainId}</p>
           <p>{campaign.from}</p>
@@ -49,44 +53,47 @@ function App() {
 import { type UseCampaignsParams } from "@metrom-xyz/react";
 ```
 
-#### status
+#### page, pageSize
 
-`CampaignStatus | undefined`
+`number`
 
-Optional campaign status to filter for. Defaults to `undefined`.
+Required campaigns pagination information.
 
 ```tsx
 import { useCampaigns, CampaignStatus } from "@metrom-xyz/react";
 
 function App() {
   const { isLoading, data } = useCampaigns({
-    status: CampaignStatus.Active,
+    page: 1,
+    pageSize: 10,
   });
 }
 ```
 
-#### owner
+#### type
 
-`Address | undefined`
+`CampaignType`
 
-Optional campaign owner to filter for; the owner can be different from the
-campaign creator if the ownership was transferred. Defaults to `undefined`.
+Required campaigns type to filter for. Metrom currently supports `rewards` and
+`points` campaigns.
 
 ```tsx
-import { useCampaigns } from "@metrom-xyz/react";
+import { useCampaigns, CampaignType } from "@metrom-xyz/react";
 
 function App() {
   const { isLoading, data } = useCampaigns({
-    owner: "0x0000000000000000000000000000000000000000",
+    page: 1,
+    pageSize: 10,
+    type: CampaignType.Rewards,
   });
 }
 ```
 
-#### chainId
+#### chainIds
 
-`number | undefined`
+`number[] | undefined`
 
-Optional campaign chain id to filter for; the chain id is where the campaign
+Optional campaign chain ids to filter for; the chain id is where the campaign
 lives in. Defaults to `undefined`.
 
 ```tsx
@@ -94,23 +101,112 @@ import { useCampaigns } from "@metrom-xyz/react";
 
 function App() {
   const { isLoading, data } = useCampaigns({
-    chainId: 1,
+    page: 1,
+    pageSize: 10,
+    type: CampaignType.Rewards,
+    chainIds: [1],
   });
 }
 ```
 
-#### dex
+#### chainTypes
 
-`SupportedDex | undefined`
+`ChainType[] | undefined`
 
-Optional campaign targeted dex. Defaults to `undefined`.
+Optional chain types to filter for; the chain type is where the campaign lives
+in. Defaults to `undefined`.
+
+```tsx
+import { useCampaigns, ChainType } from "@metrom-xyz/react";
+
+function App() {
+  const { isLoading, data } = useCampaigns({
+    page: 1,
+    pageSize: 10,
+    type: CampaignType.Rewards,
+    chainTypes: [ChainType.Evm],
+  });
+}
+```
+
+#### protocols
+
+`SupportedProtocol[] | undefined`
+
+Optional protocols to filter for; the protocol is the one targeted by the
+campaign. Defaults to `undefined`. Protocols can be any of the supported types
+`SupportedDex | SupportedLiquityV2 | SupportedAaveV3 | SupportedBridge | SupportedGmxV1`.
 
 ```tsx
 import { useCampaigns, SupportedDex } from "@metrom-xyz/react";
 
 function App() {
   const { isLoading, data } = useCampaigns({
-    dex: SupportedDex.UniswapV3,
+    page: 1,
+    pageSize: 10,
+    type: CampaignType.Rewards,
+    protocols: [SupportedDex.UniswapV3],
+  });
+}
+```
+
+#### statuses
+
+`CampaignStatus[] | undefined`
+
+Optional statues to filter for. Defaults to `undefined`.
+
+```tsx
+import { useCampaigns, CampaignStatus } from "@metrom-xyz/react";
+
+function App() {
+  const { isLoading, data } = useCampaigns({
+    page: 1,
+    pageSize: 10,
+    type: CampaignType.Rewards,
+    statuses: [CampaignStatus.Active, CampaignStatus.Upcoming],
+  });
+}
+```
+
+#### orderBy
+
+`CampaignOrderBy | undefined`
+
+An optional field that specifies how to sort the results; sorting by
+`CampaignOrderBy.Apr` is supported only for `rewards` campaigns. Defaults
+`undefined`.
+
+```tsx
+import { useCampaigns, CampaignOrderBy } from "@metrom-xyz/react";
+
+function App() {
+  const { isLoading, data } = useCampaigns({
+    page: 1,
+    pageSize: 10,
+    type: CampaignType.Rewards,
+    orderBy: CampaignOrderBy.Apr,
+  });
+}
+```
+
+#### asc
+
+`boolean | undefined`
+
+An optional field that specifies the sort direction of the results; Defaults
+`undefined`.
+
+```tsx
+import { useCampaigns } from "@metrom-xyz/react";
+
+function App() {
+  const { isLoading, data } = useCampaigns({
+    page: 1,
+    pageSize: 10,
+    type: CampaignType.Rewards,
+    orderBy: CampaignOrderBy.Apr,
+    asc: false,
   });
 }
 ```
@@ -125,8 +221,16 @@ import { type UseCampaignsReturnValue } from "@metrom-xyz/react";
 
 #### data
 
-`Campaign[] | undefined`
+`PaginatedCampaigns | undefined`
 
-List of fetched campaigns. Defaults to `undefiend`.
+```ts
+interface PaginatedCampaigns {
+  totalItems: number;
+  campaigns: Campaign[];
+}
+```
+
+Paginated list of fetched campaigns, and the total items count. Defaults to
+`undefiend`.
 
 <QueryResult />

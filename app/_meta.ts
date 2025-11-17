@@ -20,6 +20,7 @@ const meta = {
         title: "For Liquidity Providers",
     },
     "claim-rewards": "Claiming rewards",
+    "aave-aptos": "AAVE x APTOS campaign",
     _3: {
         type: "separator",
         title: "Resources",

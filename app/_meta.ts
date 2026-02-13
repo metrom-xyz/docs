@@ -26,7 +26,7 @@ const meta = {
         title: "Resources",
     },
     roadmap: "Roadmap",
-    "supported-dexes": "Supported DEXes",
+    "supported-protocols": "Supported protocols",
     audits: "Audits and tests",
     "brand-assets": "Brand assets",
     _4: {

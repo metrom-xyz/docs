@@ -18,7 +18,7 @@
         "@fontsource/ibm-plex-mono": "^5.2.7",
         "@fontsource/ibm-plex-sans": "^5.2.8",
         "@metrom-xyz/ui": "^0.11.5",
-        "next": "^15.5.9",
+        "next": "^15.5.12",
         "nextra": "^4.6.1",
         "nextra-theme-docs": "^4.6.1",
         "react": "^19.2.4",
@@ -42,7 +42,7 @@
         "prettier": "^3.8.1",
         "tailwindcss": "^4.1.18",
         "typescript": "^5.9.3",
-        "viem": "^2.45.3"
+        "viem": "^2.46.1"
     },
     "packageManager": "pnpm@10.28.0"
 }

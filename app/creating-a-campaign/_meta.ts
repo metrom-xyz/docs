@@ -1,4 +1,5 @@
 const meta = {
+    "fixed-apr": "Add a Fixed APR",
     "reward-ratio": "Add Reward Ratio",
     "kpi-campaign": "Add a KPI",
     "rbi-campaign": "Add Range Based Incentive",

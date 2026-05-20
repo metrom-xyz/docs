@@ -12,7 +12,7 @@ is just as easy. For a quick refresher on KPIs, check out
 
 ### Configuration
 
-Once all the required form steps are completed, it's time to enable the KPI and
+Once all the required steps are completed, it's time to configure the KPI and
 explore the available configuration options.
 
 <div className="mediaWrapper">
@@ -29,21 +29,86 @@ explore the available configuration options.
 - **Minimum payout**: This is the percentage of rewards that will be distributed
   to LPs, regardless of the KPI.
 
-The KPI step also provides a simulation of your configuration, giving you an
-overview of how the rewards distribution will change as the TVL fluctuates.
-Let's say we want to have a linear incentivization between with a lower bound of
-`$2m` and a target of up to `$5m`.
+### Define your strategy
+ 
+Metrom provides four reward distribution strategies for KPI campaigns. 
+Each one shapes how APR behaves as TVL moves inside the bounds you set.
+ 
+#### Traditional reward
+ 
+APR starts high when TVL is low and decreases as TVL grows.
+ 
+Best for bootstrapping liquidity quickly. Early LPs see strong yields, and emissions 
+taper as the pool fills up, keeping the cost of acquiring each marginal dollar of liquidity 
+in check.
 
 <div className="mediaWrapper">
-  ![Configured KPI step](/images/creation-form-configured-kpi.png)
+  ![Traditional reward](/images/kpi-reward-traditional.png)
 </div>
 
-Once you're satisfied with the KPI setup, apply the changes and head to the
-campaign preview, where you can review all the details, including the KPI
-configuration and simulation.
+#### Capped reward rate
+ 
+APR stays flat up to a specified TVL, then drops past that point.
+ 
+Best for predictable yields up to a known target. Once TVL crosses the upper bound, 
+additional liquidity earns less, which discourages overshooting and reduces wasted emissions 
+on excess capital.
+
+<div className="mediaWrapper">
+  ![Capped reward](/images/kpi-reward-capped.png)
+</div>
+
+#### Increasing APR
+ 
+APR rises with TVL and stops paying rewards below a set TVL.
+ 
+Best for protocols that need to hit a minimum scale before incentives kick in. No rewards flow 
+until the pool clears the lower bound, then APR climbs as more liquidity is added, rewarding 
+LPs more as the pool gets healthier.
+
+<div className="mediaWrapper">
+  ![Increasing APR](/images/kpi-reward-increasing.png)
+</div>
+
+#### Custom reward rate
+ 
+Use your own curve to shape how rewards are distributed across the TVL range.
+ 
+Best for protocols with specific incentive logic that doesn't fit the three presets. 
+You define the distribution behavior end to end.
+
+The simulation chart updates live as you adjust the strategy and parameters. 
+It shows two things:
+
+- **The APR curve** in orange, plotted against TVL.
+- **The rewards distribution area** in green, showing how much of the total reward pool is paid out at each TVL level.
+
+Here as an example we have set a custom reward curve for a pool with a lower bound of
+`$250,000` and a upper bound of `$700,000`, with a 17% minimum payout.
+
+Use the simulation to sanity-check the curve before saving. If it shows 
+`MISSING DATA FOR THE SIMULATION`, fill in the bounds and minimum payout so the 
+chart can compute the projection.
+
+<div className="mediaWrapper">
+  ![Custom reward](/images/kpi-reward-custom.png)
+</div>
+
+Once you're satisfied with the KPI setup, save the changes and head to see
+campaign preview, where you can review all the details. 
 
 <div className="mediaWrapper">
   ![Preview with KPI](/images/preview-with-kpi.png)
 </div>
 
-At this point, the only thing left to do is launch the campaign.
+Connect wallet to transfer reward tokens
+and launch the campaign.
+
+---
+
+Ready to deploy? Head over to your
+[dashboard](https://app.metrom.xyz/en/campaigns/create/amm-pool-liquidity/tokens) and
+flip on **Set KPI**.
+
+Need help? Join the conversation in our
+[Discord](https://discord.com/invite/S2kBEAGWbM) or email hello@metrom.xyz.

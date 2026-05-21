@@ -2,17 +2,22 @@ import "@fontsource/ibm-plex-sans/400.css";
 import "@fontsource/ibm-plex-sans/500.css";
 import "@fontsource/ibm-plex-sans/700.css";
 import "@fontsource/ibm-plex-mono/500.css";
+import "nextra-theme-docs/style.css";
 
 import "./style.css";
 
 import { Layout, Navbar } from "nextra-theme-docs";
 import { Head } from "nextra/components";
 import { getPageMap } from "nextra/page-map";
-import "nextra-theme-docs/style.css";
 import { MetromSquareLogo } from "../assets/logos/metrom-square";
 import { Footer } from "../components/footer";
+import { Metadata } from "next";
 
-export const metadata = {
+const UMAMI_WEBSITE_ID: string = process.env.NEXT_PUBLIC_UMAMI_WEBSITE_ID!;
+
+console.log("umami site id", UMAMI_WEBSITE_ID);
+
+export const metadata: Metadata = {
     title: "Metrom",
     description:
         "Metrom documentation portal. Maximize your liquidity mining impact with precise incentives",
@@ -29,9 +34,18 @@ export default async function RootLayout({ children }) {
     return (
         <html lang="en" dir="ltr" suppressHydrationWarning>
             <Head>
+                <script
+                    defer
+                    src="https://umami.metrom.xyz/s.js"
+                    data-website-id={UMAMI_WEBSITE_ID}
+                    data-domains="docs.metrom.xyz"
+                ></script>
                 <meta name="description" content={metadata.description} />
-                <meta property="og:title" content={metadata.title} />
-                <meta property="og:site_name" content={metadata.title} />
+                <meta property="og:title" content={metadata.title.toString()} />
+                <meta
+                    property="og:site_name"
+                    content={metadata.title.toString()}
+                />
                 <meta
                     property="og:description"
                     content={metadata.description}

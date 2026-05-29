@@ -12,7 +12,7 @@ const meta = {
         title: "Guides",
     },
     "creating-a-campaign": "Creating a campaign",
-    points: "Incentivize with Points",
+    // points: "Incentivize with Points",
     "incentivize-token-holding": "Incentivize token holding",
     "recover-rewards": "Recovering rewards",
     "using-safe-app": "Using Safe app",

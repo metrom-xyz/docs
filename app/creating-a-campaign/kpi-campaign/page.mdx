@@ -34,49 +34,59 @@ explore the available configuration options.
 Metrom provides four reward distribution strategies for KPI campaigns. 
 Each one shapes how APR behaves as TVL moves inside the bounds you set.
  
-#### Traditional reward
- 
+<details>
+<summary>**Traditional reward**</summary>
+
 APR starts high when TVL is low and decreases as TVL grows.
- 
-Best for bootstrapping liquidity quickly. Early LPs see strong yields, and emissions 
-taper as the pool fills up, keeping the cost of acquiring each marginal dollar of liquidity 
+
+Best for bootstrapping liquidity quickly. Early LPs see strong yields, and emissions
+taper as the pool fills up, keeping the cost of acquiring each marginal dollar of liquidity
 in check.
 
 <div className="mediaWrapper">
   ![Traditional reward](/images/kpi-reward-traditional.png)
 </div>
 
-#### Capped reward rate
- 
+</details>
+
+<details>
+<summary>**Capped reward rate**</summary>
+
 APR stays flat up to a specified TVL, then drops past that point.
- 
-Best for predictable yields up to a known target. Once TVL crosses the upper bound, 
-additional liquidity earns less, which discourages overshooting and reduces wasted emissions 
+
+Best for predictable yields up to a known target. Once TVL crosses the upper bound,
+additional liquidity earns less, which discourages overshooting and reduces wasted emissions
 on excess capital.
 
 <div className="mediaWrapper">
   ![Capped reward](/images/kpi-reward-capped.png)
 </div>
 
-#### Increasing APR
- 
+</details>
+
+<details>
+<summary>**Increasing APR**</summary>
+
 APR rises with TVL and stops paying rewards below a set TVL.
- 
-Best for protocols that need to hit a minimum scale before incentives kick in. The APR climbs 
+
+Best for protocols that need to hit a minimum scale before incentives kick in. The APR climbs
 as more liquidity is added, rewarding LPs more as the pool gets healthier.
 
 <div className="mediaWrapper">
   ![Increasing APR](/images/kpi-reward-increasing.png)
 </div>
 
-#### Custom reward rate
- 
+</details>
+
+<details>
+<summary>**Custom reward rate**</summary>
+
 Use your own curve to shape how rewards are distributed across the TVL range.
- 
-Best for protocols with specific incentive logic that doesn't fit the three presets. 
+
+Best for protocols with specific incentive logic that doesn't fit the three presets.
 You define the distribution behavior end to end.
 
-The simulation chart updates live as you adjust the strategy and parameters. 
+The simulation chart updates live as you adjust the strategy and parameters.
 It shows two things:
 
 - **The APR curve** in orange, plotted against TVL.
@@ -85,13 +95,15 @@ It shows two things:
 Here as an example we have set a custom reward curve for a pool with a lower bound of
 `$250,000` and a upper bound of `$700,000`, with a 17% minimum payout.
 
-Use the simulation to sanity-check the curve before saving. If it shows 
-`MISSING DATA FOR THE SIMULATION`, fill in the bounds and minimum payout so the 
+Use the simulation to sanity-check the curve before saving. If it shows
+`MISSING DATA FOR THE SIMULATION`, fill in the bounds and minimum payout so the
 chart can compute the projection.
 
 <div className="mediaWrapper">
   ![Custom reward](/images/kpi-reward-custom.png)
 </div>
+
+</details>
 
 Once you're satisfied with the KPI setup, save the changes and head to see
 campaign preview, where you can review all the details. 

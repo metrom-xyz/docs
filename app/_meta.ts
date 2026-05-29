@@ -26,7 +26,7 @@ const meta = {
         type: "separator",
         title: "Resources",
     },
-    roadmap: "Roadmap",
+    // roadmap: "Roadmap",
     "supported-protocols": "Supported protocols",
     audits: "Audits and tests",
     "brand-assets": "Brand assets",

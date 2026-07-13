@@ -154,7 +154,7 @@ function App() {
 
 `CampaignStatus[] | undefined`
 
-Optional statues to filter for. Defaults to `undefined`.
+Optional statuses to filter for. Defaults to `undefined`.
 
 ```tsx
 import { useCampaigns, CampaignStatus } from "@metrom-xyz/react";
@@ -174,7 +174,7 @@ function App() {
 `CampaignOrderBy | undefined`
 
 An optional field that specifies how to sort the results; sorting by
-`CampaignOrderBy.Apr` is supported only for `rewards` campaigns. Defaults
+`CampaignOrderBy.Apr` is supported only for `rewards` campaigns. Defaults to
 `undefined`.
 
 ```tsx
@@ -194,7 +194,7 @@ function App() {
 
 `boolean | undefined`
 
-An optional field that specifies the sort direction of the results; Defaults
+An optional field that specifies the sort direction of the results; Defaults to
 `undefined`.
 
 ```tsx
@@ -231,6 +231,6 @@ interface PaginatedCampaigns {
 ```
 
 Paginated list of fetched campaigns, and the total items count. Defaults to
-`undefiend`.
+`undefined`.
 
 <QueryResult />

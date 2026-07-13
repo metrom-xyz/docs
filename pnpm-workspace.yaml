@@ -1,0 +1,8 @@
+packages:
+  - "."
+
+minimumReleaseAge: 10080 # 7 days in minutes
+blockExoticSubdeps: true
+allowBuilds:
+  sharp: false
+  unrs-resolver: false

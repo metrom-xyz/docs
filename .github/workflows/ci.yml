@@ -9,19 +9,14 @@ on:
 jobs:
   ci:
     runs-on: ubuntu-latest
-    strategy:
-      matrix:
-        node-version: [18.x]
     steps:
       - name: Checkout
-        uses: actions/checkout@v3
-      - uses: pnpm/action-setup@v2
+        uses: actions/checkout@v6
+      - uses: pnpm/action-setup@v6
+      - name: Setup Node
+        uses: actions/setup-node@v6
         with:
-          version: "latest"
-      - name: Setup Node.js ${{ matrix.node-version }}
-        uses: actions/setup-node@v3
-        with:
-          node-version: ${{ matrix.node-version }}
+          node-version-file: "package.json"
           cache: "pnpm"
       - name: Install dependencies
         run: pnpm install --frozen-lockfile

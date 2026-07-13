@@ -18,7 +18,7 @@
         "@fontsource/ibm-plex-mono": "^5.2.7",
         "@fontsource/ibm-plex-sans": "^5.2.8",
         "@metrom-xyz/ui": "^0.11.5",
-        "next": "^15.5.12",
+        "next": "^15.5.18",
         "nextra": "^4.6.1",
         "nextra-theme-docs": "^4.6.1",
         "react": "^19.2.4",
@@ -31,6 +31,7 @@
         "@eslint/eslintrc": "^3.3.4",
         "@tailwindcss/postcss": "^4.2.1",
         "@types/node": "24.0.10",
+        "@types/react": "19.2.14",
         "autoprefixer": "^10.4.24",
         "eslint": "^9.30.1",
         "eslint-config-next": "^15.3.4",
@@ -44,5 +45,8 @@
         "typescript": "^5.9.3",
         "viem": "^2.46.3"
     },
-    "packageManager": "pnpm@10.28.0"
+    "packageManager": "pnpm@11.1.2",
+    "engines": {
+        "node": ">=22 <=24"
+    }
 }

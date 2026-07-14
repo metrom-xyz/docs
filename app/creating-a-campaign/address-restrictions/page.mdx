@@ -1,32 +1,32 @@
 ---
 title: Restrictions
-description: How to addresses restrictions to a campaign.
+description: How to add address restrictions to a campaign.
 ---
 
 ## Restrictions
 
 When creating a campaign on Metrom you can choose to add `restrictions`, to
-either `blacklist` addresses that shouldn't receive rewards, or `whitelist` only
+either `Block` any address from receiving rewards, or `Allow` only
 those that should be eligible to receive rewards.
 
-To enable restrictions, toggle the `FILTER ADDRESSES` option. Then, select the
-type of restriction and add addresses either manually or by importing a CSV file
-(the CSV must contain a single column listing the addresses). A maximum of 20
-addresses can be restricted.
+To enable restrictions, expand `Define rewards to distribute` and navigate to `Define 
+who can earn rewards` section. Then, select the type of restriction and add addresses 
+either manually or by importing a CSV file (the CSV must contain a single column listing 
+the addresses). A maximum of 20 addresses can be blocked or allowed.
 
 <div className="mediaWrapper">
   ![Empty restrictions](/images/creation-form-empty-restrictions.png)
 </div>
 
-For example, to block 20 addresses from receiving rewards, the configuration
+For example, to block addresses from receiving rewards, the configuration
 will look like this:
 
 <div className="mediaWrapper">
   ![Empty restrictions](/images/creation-form-configured-restrictions.png)
 </div>
 
-**Here’s a quick video about how to blacklist any address** (**_similar steps
-can be taken to whitelist any address_**):
+**Here’s a quick video about how to `Block` any address** (**_similar steps
+can be taken to `Allow` any address_**):
 
 <div className="mediaWrapper">
   <video
@@ -43,3 +43,14 @@ can be taken to whitelist any address_**):
     Your browser does not support the video tag.
   </video>
 </div>
+
+Make sure to click on `Next` to save the configuration, and connect your wallet to
+transfer the reward tokens to launch the campaign.
+
+---
+
+Ready to deploy? Head over to the
+[dashboard](https://app.metrom.xyz/en/campaigns/create/amm-pool-liquidity/tokens)
+
+Need help? Join the conversation in our
+[Discord](https://discord.com/invite/S2kBEAGWbM) or email hello@metrom.xyz.

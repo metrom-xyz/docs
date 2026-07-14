@@ -12,7 +12,8 @@ const meta = {
         title: "Guides",
     },
     "creating-a-campaign": "Creating a campaign",
-    points: "Incentivize with Points",
+    // points: "Incentivize with Points",
+    "incentivize-token-holding": "Incentivize token holding",
     "recover-rewards": "Recovering rewards",
     "using-safe-app": "Using Safe app",
     _2: {
@@ -25,7 +26,7 @@ const meta = {
         type: "separator",
         title: "Resources",
     },
-    roadmap: "Roadmap",
+    // roadmap: "Roadmap",
     "supported-protocols": "Supported protocols",
     audits: "Audits and tests",
     "brand-assets": "Brand assets",

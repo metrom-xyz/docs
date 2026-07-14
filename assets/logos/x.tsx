@@ -1,4 +1,6 @@
-export function XLogo(props: any) {
+import { SVGProps } from "react";
+
+export function XLogo(props: SVGProps<SVGSVGElement>) {
     return (
         <svg
             width="22"

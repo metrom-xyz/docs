@@ -1,4 +1,6 @@
-export function MetromFullLogo(props: any) {
+import { SVGProps } from "react";
+
+export function MetromFullLogo(props: SVGProps<SVGSVGElement>) {
     return (
         <svg
             width="264"

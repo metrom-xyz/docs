@@ -1,4 +1,6 @@
-export function GithubLogo(props: any) {
+import { SVGProps } from "react";
+
+export function GithubLogo(props: SVGProps<SVGSVGElement>) {
     return (
         <svg
             width="24"

@@ -1,4 +1,6 @@
-export function TelegramLogo(props: any) {
+import { SVGProps } from "react";
+
+export function TelegramLogo(props: SVGProps<SVGSVGElement>) {
     return (
         <svg
             width="26"

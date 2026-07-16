@@ -57,6 +57,16 @@ import { type UseClaimsParams } from "@metrom-xyz/react";
 
 Chain type of the claims. Defaults to `evm`.
 
+```tsx
+import { useClaims, ChainType } from "@metrom-xyz/react";
+
+function App() {
+  const { isLoading, data } = useClaims({
+    chainType: ChainType.Evm,
+  });
+}
+```
+
 #### address
 
 `Address | undefined`

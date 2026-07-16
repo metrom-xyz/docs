@@ -76,6 +76,12 @@ function App() {
 import { type UseClaimsTransactionParams } from "@metrom-xyz/react";
 ```
 
+#### chainType
+
+`ChainType | undefined`
+
+Chain type of the claims. Defaults to `evm`.
+
 #### chainId
 
 `number`
@@ -120,7 +126,7 @@ function App() {
 `Address | undefined`
 
 The account address eligible to receive the claims (the receiver). The
-`useClaims` hook won’t run until an `address` is provided.
+`useClaimsTransaction` hook won’t run until an `address` is provided.
 
 ```tsx
 import { useClaimsTransaction, useClaims } from "@metrom-xyz/react";
